@@ -4,7 +4,6 @@ import { SoccerSchedule } from "./SoccerSchedule";
 import { SoccerTeams } from "./SoccerTeams";
 import { SoccerPlayers } from "./SoccerPlayers";
 import { SoccerResult } from "./SoccerResult";
-// import { SoccerStats } from "./SoccerStats";
 
 export const SoccerDashboard = ({ selectedSubTab, selectedGender }) => {
   return (

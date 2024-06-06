@@ -24,7 +24,7 @@ export const VolleyballResult = ({ selectedGender }) => {
   const [filterMode, setFilterMode] = useState("day");
 
   const generateWeek = (baseDate) => {
-    const millisecondsPerDay = 86400000; // Number of milliseconds in one day
+    const millisecondsPerDay = 86400000;
     let days = [];
 
     for (let i = -3; i <= 3; i++) {
@@ -62,16 +62,12 @@ export const VolleyballResult = ({ selectedGender }) => {
     setIndexDay(new Date(indexDay.getTime() - 86400000));
   };
 
-  // Define a function to extract scores
   const extractScores = (result) => {
-    // Initialize arrays to store scores for team 1 and team 2
     const score1 = [0, 0, 0];
     const score2 = [0, 0, 0];
 
-    // Iterate through each set in the result
     for (let key in result) {
       if (key.startsWith("Set")) {
-        // Split the set score into individual scores for each team
         if (result[key] != null && result[key] != "") {
           const [scoreTeam1, scoreTeam2] = result[key].split("-").map(Number);
           const setNumber = parseInt(key.slice(3)) - 1;
@@ -81,7 +77,6 @@ export const VolleyballResult = ({ selectedGender }) => {
       }
     }
 
-    // Calculate total sets won by each team
     let totalScore = [0, 0];
     for (let i = 0; i < score1.length; i++) {
       if (score1[i] > score2[i]) {
@@ -91,7 +86,6 @@ export const VolleyballResult = ({ selectedGender }) => {
       }
     }
 
-    // Return the extracted values
     return {
       score1: score1,
       score2: score2,

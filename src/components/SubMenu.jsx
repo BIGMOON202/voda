@@ -18,15 +18,14 @@ export const SubMenu = ({
 }) => {
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
-  const dropdownRef = useRef(null); // Ref to the dropdown container
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setShowDropdown(false); // Close dropdown if clicked outside
+        setShowDropdown(false);
       }
     };
-
     // Add when the component mounts
     document.addEventListener("mousedown", handleClickOutside);
     return () => {

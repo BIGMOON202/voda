@@ -6,18 +6,15 @@ import { useFirestoreOverall } from "../../hooks/useFirestoreOverall";
 
 export const VolleyballStandings = ({ selectedGender }) => {
   const calculateResult = (set1, set2, set3) => {
-    // Define a default value for each set score if it's undefined or null
     const defaultScore = "0-0";
     const score1 = set1 || defaultScore;
     const score2 = set2 || defaultScore;
     const score3 = set3 || defaultScore;
 
-    // Split scores by '-' to get individual scores
     const [set1TeamAScore, set1TeamBScore] = score1.split("-").map(Number);
     const [set2TeamAScore, set2TeamBScore] = score2.split("-").map(Number);
     const [set3TeamAScore, set3TeamBScore] = score3.split("-").map(Number);
 
-    // Calculate the total number of sets won by each team
     const teamASetsWon =
       (set1TeamAScore > set1TeamBScore ? 1 : 0) +
       (set2TeamAScore > set2TeamBScore ? 1 : 0) +

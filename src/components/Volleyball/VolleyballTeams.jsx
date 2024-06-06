@@ -33,7 +33,6 @@ export const VolleyballTeams = ({ selectedGender }) => {
     },
   ];
 
-  // Filter documents based on selected gender
   const filteredDocuments = documents.filter(
     (team) => team.Gender === selectedGender.charAt(0)
   );

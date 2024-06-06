@@ -82,7 +82,7 @@ export const VolleyballStats = ({ selectedGender }) => {
   const handleViewStats = (doc, filteredSubDocs) => {
     setSelectedDoc(doc);
     setSelectedSubDocs(filteredSubDocs);
-    setModalOpen(true); // Open the modal
+    setModalOpen(true);
   };
 
   const disabledStyles =

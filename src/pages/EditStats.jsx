@@ -111,14 +111,11 @@ export const EditStats = () => {
     const updatedJson = slicedJson.map((obj) => {
       const updatedObj = {};
       Object.keys(obj).forEach((oldKey) => {
-        // Get the corresponding new key name from the mapping or use the old key if not found
         const newKey = keyMapping_Volleyball[oldKey] || oldKey;
         updatedObj[newKey] = obj[oldKey];
       });
       return updatedObj;
     });
-    // console.log(docId);
-    // await addSubDocument(docId, updatedJson);
 
     filteredSubDocs.forEach(async (row) => {
       await deleteSubDocument(docId, "Volleyball", row.id);
@@ -157,7 +154,6 @@ export const EditStats = () => {
     const updatedJson = jsonData.map((obj) => {
       const updatedObj = {};
       Object.keys(obj).forEach((oldKey) => {
-        // Get the corresponding new key name from the mapping or use the old key if not found
         const newKey = keyMapping_Basketball[oldKey] || oldKey;
         updatedObj[newKey] = obj[oldKey];
       });
@@ -250,7 +246,7 @@ export const EditStats = () => {
     setViewSport(sport);
     setSelectedDoc(doc);
     setSelectedSubDocs(filteredSubDocs);
-    setModalOpen(true); // Open the modal
+    setModalOpen(true);
   };
 
   return (
@@ -398,7 +394,7 @@ export const EditStats = () => {
                         onChange={(e) => {
                           handleFileUploadVolleyball(e, doc.id, doc.stats);
                           e.target.value = null;
-                        }} // Pass doc.id to the handleUpload function
+                        }}
                         accept=".xlsx,.xls"
                         style={{ display: "none" }}
                       />
@@ -437,12 +433,8 @@ export const EditStats = () => {
       )}
       {activeTab === "Soccer" && (
         <div>
-          {activeGender === "men" && (
-            <div className="mt-8">{/* Men's Soccer content */}</div>
-          )}
-          {activeGender === "women" && (
-            <div className="mt-8">{/* Women's Soccer content */}</div>
-          )}
+          {activeGender === "men" && <div className="mt-8"></div>}
+          {activeGender === "women" && <div className="mt-8"></div>}
         </div>
       )}
       {activeTab === "Basketball" && (
@@ -531,7 +523,7 @@ export const EditStats = () => {
                         onChange={(e) => {
                           handleFileUploadBasketball(e, doc.id, doc.stats);
                           e.target.value = null;
-                        }} // Pass doc.id to the handleUpload function
+                        }}
                         accept=".xlsx,.xls"
                         style={{ display: "none" }}
                       />

@@ -87,6 +87,26 @@ export const EditData = ({ activeSport, selectedCategory }) => {
     setDocuments(initialDocuments);
   }, [initialDocuments]);
 
+  const isEqual = (obj1, obj2) => {
+    // Get the keys of both objects
+    const keys1 = Object.keys(obj1);
+    const keys2 = Object.keys(obj2);
+
+    // Check if the number of keys is different
+    if (keys1.length !== keys2.length) {
+      return false;
+    }
+
+    // Check if all keys and their values are the same
+    for (let key of keys1) {
+      if (obj1[key] !== obj2[key]) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
   const handleEdit = (index) => {
     setEditRowIndex(index);
   };
@@ -123,13 +143,74 @@ export const EditData = ({ activeSport, selectedCategory }) => {
     const worksheet = workbook.Sheets[worksheetName];
     const json = XLSX.utils.sheet_to_json(worksheet, { raw: false });
 
-    documents.forEach((doc) => {
-      deleteDocument(doc.id);
-    });
+    // documents.forEach((doc) => {
+    //   deleteDocument(doc.id);
+    // });
 
     json.forEach(async (row) => {
-      await addDocument(row);
+      let filteredDoc = [];
+      if (mergedString == "VolleyballSchedules") {
+        filteredDoc = documents.filter((doc) => {
+          return (doc.Gender =
+            row.Gender &&
+            doc.Date == row.Date &&
+            doc.TeamA == row.TeamA &&
+            doc.TeamB == row.TeamB &&
+            doc.Type == row.Type &&
+            doc.Set1 == row.Set1 &&
+            doc.Set2 == row.Set2 &&
+            doc.Set3 == row.Set3);
+        });
+      } else if (mergedString == "SoccerSchedules") {
+        filteredDoc = documents.filter((doc) => {
+          return (doc.Gender =
+            row.Gender &&
+            doc.Date == row.Date &&
+            doc.TeamA == row.TeamA &&
+            doc.TeamB == row.TeamB &&
+            doc.Type == row.Type &&
+            doc.Score == row.Score &&
+            doc.Penalty == row.Penalty);
+        });
+      } else if (mergedString == "BasketballSchedules") {
+        filteredDoc = documents.filter((doc) => {
+          return (doc.Gender =
+            row.Gender &&
+            doc.Date == row.Date &&
+            doc.TeamA == row.TeamA &&
+            doc.TeamB == row.TeamB &&
+            doc.Type == row.Type &&
+            doc.Score == row.Score);
+        });
+      } else if (selectedCategory == "Teams") {
+        filteredDoc = documents.filter((doc) => {
+          return (doc.Gender =
+            row.Gender &&
+            doc.TeamName == row.TeamName &&
+            doc.Abbreviation == row.Abbreviation);
+        });
+      } else if (selectedCategory == "Players") {
+        filteredDoc = documents.filter((doc) => {
+          return (doc.Gender =
+            row.Gender &&
+            doc.TeamName == row.TeamName &&
+            doc.Name == row.Name &&
+            doc.LastName == row.LastName &&
+            doc.Number == row.Number &&
+            doc.Position == row.Position &&
+            doc.Height == row.Height &&
+            doc.Grade == row.Grade);
+        });
+      }
+
+      if (filteredDoc.length > 0) {
+        console.log("same");
+      } else {
+        await addDocument(row);
+      }
     });
+
+    fileInputRef.current.value = "";
   };
 
   const onUploadImageClicked = (doc) => {
@@ -246,11 +327,6 @@ export const EditData = ({ activeSport, selectedCategory }) => {
                   ) : (
                     <img className="w-10 h-10" />
                   )}
-                  {/* <FontAwesomeIcon
-                    icon={faUpload}
-                    onClick={() => onUploadImageClicked(doc)}
-                    className="mr-2 hover:text-gray-600 cursor-pointer"
-                  /> */}
                   <button
                     onClick={() => onUploadImageClicked(doc)}
                     className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-150 ease-in-out focus:outline-none focus:ring text-[14px] focus:ring-blue-300"

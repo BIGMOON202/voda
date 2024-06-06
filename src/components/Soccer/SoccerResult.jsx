@@ -24,7 +24,7 @@ export const SoccerResult = ({ selectedGender }) => {
   const [filterOption, setFilterOption] = useState("day");
 
   const generateWeek = (baseDate) => {
-    const millisecondsPerDay = 86400000; // Number of milliseconds in one day
+    const millisecondsPerDay = 86400000;
     let days = [];
 
     for (let i = -3; i <= 3; i++) {
