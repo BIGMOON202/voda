@@ -111,49 +111,51 @@ export const TopMenu = ({ selectedTab, setSelectedTab }) => {
                 </p>
               </>
             )}
-            {!user && (
-              <p
-                className={`text-[24px] hover:font-bold hover:cursor-pointer ${
-                  location.pathname === "/signin" ? "font-bold" : ""
-                }`}
-                onClick={() => navigate("/signin")}
-              >
-                Login
-              </p>
-            )}
           </div>
         </div>
-        {user && (
-          <div
-            className="flex gap-2 mr-[60px] bg-white py-[10px] px-[15px] rounded-2xl relative hover:cursor-pointer"
-            ref={buttonRef}
-            onClick={() => setShowDropdown(!showDropdown)}
-          >
-            <img
-              src={avatar}
-              alt="avatar"
-              className="w-[45px] h-[45px] rounded-full border"
-            />
-            <div>
-              <p className="text-[18px]">{user.displayName || "User"}</p>
-              <p className="text-[12px] text-[#505050]">{user.email}</p>
-            </div>
-            <img src={dropdown} alt="dropdown icon" />
-            {showDropdown && (
-              <div
-                ref={dropdownRef}
-                className="absolute right-0 mt-12 py-2 w-48 bg-white rounded-lg shadow-xl"
-              >
-                <p
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:cursor-pointer"
-                  onClick={handleSignOut}
-                >
-                  Sign Out
-                </p>
+        <div className="flex gap-2 mr-[60px] items-center">
+          {!user && (
+            <p
+              className={`text-[24px] hover:font-bold hover:cursor-pointer ${
+                location.pathname === "/signin" ? "font-bold" : ""
+              }`}
+              onClick={() => navigate("/signin")}
+            >
+              Sign In
+            </p>
+          )}
+          {user && (
+            <div
+              className="flex gap-2 bg-white py-[10px] px-[15px] rounded-2xl relative hover:cursor-pointer"
+              ref={buttonRef}
+              onClick={() => setShowDropdown(!showDropdown)}
+            >
+              <img
+                src={avatar}
+                alt="avatar"
+                className="w-[45px] h-[45px] rounded-full border"
+              />
+              <div>
+                <p className="text-[18px]">{user.displayName || "User"}</p>
+                <p className="text-[12px] text-[#505050]">{user.email}</p>
               </div>
-            )}
-          </div>
-        )}
+              <img src={dropdown} alt="dropdown icon" />
+              {showDropdown && (
+                <div
+                  ref={dropdownRef}
+                  className="absolute right-0 mt-12 py-2 w-48 bg-white rounded-lg shadow-xl"
+                >
+                  <p
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:cursor-pointer"
+                    onClick={handleSignOut}
+                  >
+                    Sign Out
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

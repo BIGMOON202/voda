@@ -47,7 +47,7 @@ export const BasketballTeams = ({ selectedGender }) => {
           teamname={team.TeamName}
           teamabr={team.Abbreviation}
           teamGender={team.Gender}
-          bestteam={teams[0].bestteam}
+          bestteam={false}
         />
       ))}
     </div>

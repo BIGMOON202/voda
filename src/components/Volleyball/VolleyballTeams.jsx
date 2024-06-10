@@ -46,7 +46,7 @@ export const VolleyballTeams = ({ selectedGender }) => {
           teamlogo={team.imageUrl}
           teamname={team.TeamName}
           teamabr={team.Abbreviation}
-          bestteam={teams[0].bestteam}
+          bestteam={false}
         />
       ))}
     </div>

@@ -21,7 +21,10 @@ export const TeamCard = ({ teamID, teamlogo, teamname, teamabr, bestteam }) => {
   return (
     <div className="w-full h-[94px] rounded-[12px] border border-[#CFCFCF] px-[16px] py-[20px] flex items-center justify-between">
       <div className="flex gap-[10px]">
-        <img className="w-[54px] h-[54px]" src={teamlogo}></img>
+        <img
+          className="w-[54px] h-[54px] flex-shrink-0 rounded-full"
+          src={teamlogo}
+        ></img>
         <div className="flex flex-col gap-[8px]">
           <p className="text-[18px] font-bold text-black">{teamname}</p>
           <div className="flex items-center gap-[8px]">
