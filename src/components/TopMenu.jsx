@@ -69,7 +69,7 @@ export const TopMenu = ({ selectedTab, setSelectedTab }) => {
           <div className="ml-[60px] flex gap-[20px] items-center">
             <p
               className={`text-[24px] hover:font-bold hover:cursor-pointer ${
-                location.pathname === "/aboutus" ? "font-bold" : ""
+                location.pathname === "/aboutus" ? "font-bold underline" : ""
               }`}
               onClick={() => navigate("/aboutus")}
             >
@@ -77,7 +77,7 @@ export const TopMenu = ({ selectedTab, setSelectedTab }) => {
             </p>
             <p
               className={`text-[24px] hover:font-bold hover:cursor-pointer ${
-                location.pathname === "/sponsors" ? "font-bold" : ""
+                location.pathname === "/sponsors" ? "font-bold underline" : ""
               }`}
               onClick={() => navigate("/sponsors")}
             >
@@ -85,11 +85,19 @@ export const TopMenu = ({ selectedTab, setSelectedTab }) => {
             </p>
             <p
               className={`text-[24px] hover:font-bold hover:cursor-pointer ${
-                location.pathname === "/sports" ? "font-bold" : ""
+                location.pathname === "/sports" ? "font-bold underline" : ""
               }`}
               onClick={() => navigate("/sports")}
             >
               Sports
+            </p>
+            <p
+              className={`text-[24px] hover:font-bold hover:cursor-pointer ${
+                location.pathname === "/privacy" ? "font-bold underline" : ""
+              }`}
+              onClick={() => navigate("/privacy")}
+            >
+              Privacy
             </p>
             {user && user.email == "felix@vodastatspr.com" && (
               <>

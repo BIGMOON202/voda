@@ -15,6 +15,7 @@ import { SignUp } from "./auth/SignUp";
 import { useAuth } from "./auth/AuthContext";
 import ExcelUpload from "./pages/ExcelUpload";
 import { EditStats } from "./pages/EditStats";
+import { Privacy } from "./pages/Privacy";
 
 export const RouteHandler = () => {
   const { currentUser, loading } = useAuth();
@@ -37,6 +38,7 @@ export const RouteHandler = () => {
         <Route path="/sponsors" element={<Sponsors />} />
         <Route path="/upload" element={<ExcelUpload />} />
         <Route path="/edit_stats" element={<EditStats />} />
+        <Route path="/privacy" element={<Privacy />} />
       </Routes>
     </div>
   );
