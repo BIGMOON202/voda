@@ -188,7 +188,7 @@ export const SoccerResult = ({ selectedGender }) => {
           return (
             <SoccerResultCard
               key={index}
-              type={result.Type === "T" ? "Tournament" : "Conference"}
+              type={result.Type}
               team1={result.TeamA}
               team2={result.TeamB}
               totalScore={getScore(result.Score)}

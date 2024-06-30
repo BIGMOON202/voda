@@ -189,7 +189,7 @@ export const BasketballSchedule = ({ selectedGender }) => {
                 key={schedule.id}
                 TeamA={schedule["TeamA"]}
                 TeamB={schedule["TeamB"]}
-                Type={schedule.Type == "T" ? "Tournament" : "Conference"}
+                Type={schedule.Type}
                 Result={schedule["Score"]}
                 Date={schedule.Date}
                 logoA={teamAImageUrl}

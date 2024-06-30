@@ -210,7 +210,7 @@ export const SubMenu = ({
               selectedSubTab === "Result" ? "font-bold" : ""
             }`}
           >
-            Result
+            Results
           </p>
         </div>
         <div

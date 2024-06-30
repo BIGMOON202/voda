@@ -207,7 +207,7 @@ export const VolleyballSchedule = ({ selectedGender }) => {
                 key={schedule.id}
                 TeamA={schedule["TeamA"]}
                 TeamB={schedule["TeamB"]}
-                Type={schedule.Type == "T" ? "Tournament" : "Conference"}
+                Type={schedule.Type}
                 Result={calculateResult(
                   schedule["Set1"],
                   schedule["Set2"],

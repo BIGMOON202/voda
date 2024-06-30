@@ -204,7 +204,7 @@ export const VolleyballResult = ({ selectedGender }) => {
           return (
             <VolleyballResultCard
               key={index}
-              type={result.Type == "T" ? "Tournament" : "Conference"}
+              type={result.Type}
               team1={result["TeamA"]}
               team2={result["TeamB"]}
               score1={extractScores(result).score1}

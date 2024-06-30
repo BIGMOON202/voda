@@ -188,7 +188,7 @@ export const SoccerSchedule = ({ selectedGender }) => {
                 key={schedule.id}
                 TeamA={schedule["TeamA"]}
                 TeamB={schedule["TeamB"]}
-                Type={schedule.Type == "T" ? "Tournament" : "Conference"}
+                Type={schedule.Type}
                 Result={schedule.Score}
                 Penalty={schedule.Penalty}
                 Date={schedule.Date}
