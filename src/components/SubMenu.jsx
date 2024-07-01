@@ -200,14 +200,14 @@ export const SubMenu = ({
           </p>
         </div>
         <div
-          onClick={() => setSelectedSubTab("Result")}
+          onClick={() => setSelectedSubTab("Results")}
           className={`w-[127px] h-[48px] place-content-center rounded-[12px] hover: cursor-pointer ${
-            selectedSubTab === "Result" ? "bg-[#94ACC4]/30" : ""
+            selectedSubTab === "Results" ? "bg-[#94ACC4]/30" : ""
           }`}
         >
           <p
             className={`text-center text-[18px] ${
-              selectedSubTab === "Result" ? "font-bold" : ""
+              selectedSubTab === "Results" ? "font-bold" : ""
             }`}
           >
             Results

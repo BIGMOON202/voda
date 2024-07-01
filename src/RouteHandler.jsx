@@ -35,7 +35,7 @@ export const RouteHandler = () => {
         <Route path="/" element={<Navigate replace to="/aboutus" />} />
         <Route path="/sports" element={<Sports />} />
         <Route path="/aboutus" element={<Aboutus />} />
-        <Route path="/sponsors" element={<Sponsors />} />
+        {/* <Route path="/sponsors" element={<Sponsors />} /> */}
         <Route path="/upload" element={<ExcelUpload />} />
         <Route path="/edit_stats" element={<EditStats />} />
         <Route path="/privacy" element={<Privacy />} />

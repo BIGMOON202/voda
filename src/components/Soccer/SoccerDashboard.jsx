@@ -11,7 +11,7 @@ export const SoccerDashboard = ({ selectedSubTab, selectedGender }) => {
       {selectedSubTab == "Standings" && (
         <SoccerStandings selectedGender={selectedGender} />
       )}
-      {selectedSubTab == "Result" && (
+      {selectedSubTab == "Results" && (
         <SoccerResult selectedGender={selectedGender} />
       )}
       {selectedSubTab == "Schedule" && (

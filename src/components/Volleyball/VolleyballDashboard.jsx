@@ -12,7 +12,7 @@ export const VolleyballDashboard = ({ selectedSubTab, selectedGender }) => {
       {selectedSubTab == "Standings" && (
         <VolleyballStandings selectedGender={selectedGender} />
       )}
-      {selectedSubTab == "Result" && (
+      {selectedSubTab == "Results" && (
         <VolleyballResult selectedGender={selectedGender} />
       )}
       {selectedSubTab == "Teams" && (
