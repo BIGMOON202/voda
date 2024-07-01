@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Privacy = () => {
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-8">
+    <div className="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 p-8">
       <div className="container mx-auto">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-3xl font-bold">Privacy Policy</h1>
