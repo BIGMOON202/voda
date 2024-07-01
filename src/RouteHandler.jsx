@@ -25,7 +25,7 @@ export const RouteHandler = () => {
   }
 
   return (
-    <div>
+    <>
       <TopMenu />
       <Routes>
         <Route path="/signup" element={<SignUp />} />
@@ -40,6 +40,6 @@ export const RouteHandler = () => {
         <Route path="/edit_stats" element={<EditStats />} />
         <Route path="/privacy" element={<Privacy />} />
       </Routes>
-    </div>
+    </>
   );
 };
