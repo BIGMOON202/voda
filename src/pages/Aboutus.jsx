@@ -9,8 +9,8 @@ import photo from "../assets/photo.jpeg";
 export const Aboutus = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col flex-1 justify-between bg-black">
-      <div className="flex flex-col gap-4 py-8 px-4 md:gap-8 md:py-16 md:px-20 lg:gap-12 lg:py-24 lg:px-50">
+    <div className="flex flex-col flex-1 justify-between bg-[rgb(250,246,245)]">
+      {/* <div className="flex flex-col gap-4 py-8 px-4 md:gap-8 md:py-16 md:px-20 lg:gap-12 lg:py-24 lg:px-50">
         <p className="text-xl text-center text-pink-400 font-bold md:text-3xl lg:text-4xl">
           Launching Soon
         </p>
@@ -41,7 +41,8 @@ export const Aboutus = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
+      <img src="/assets/about_us.svg" className="max-w-screen-xl m-auto w-[90%] border-2 border-[rgb(148,172,196)]"/>
     </div>
   );
 };
