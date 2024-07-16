@@ -1,48 +1,66 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import logo from "../assets/logo2.png";
-import arrow1 from "../assets/arrow1.svg";
-import arrow2 from "../assets/arrow2.svg";
-import photo from "../assets/photo.jpeg";
+import bullet from "../assets/bullet.svg";
+import logo_black from "../assets/logo_black.svg";
+import instagram_logo from "../assets/instagram.svg";
+import facebook_logo from "../assets/facebook.svg";
+import mail_logo from "../assets/mail.svg";
 
 export const Aboutus = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col flex-1 justify-between bg-[rgb(250,246,245)]">
-      {/* <div className="flex flex-col gap-4 py-8 px-4 md:gap-8 md:py-16 md:px-20 lg:gap-12 lg:py-24 lg:px-50">
-        <p className="text-xl text-center text-pink-400 font-bold md:text-3xl lg:text-4xl">
-          Launching Soon
-        </p>
-        <div className="text-center text-gray-500 font-bold text-lg md:text-2xl flex flex-col items-center">
-          <p>
-            Get ready to follow all your favorite high school sports matches
-            here!
-            <br />
-            Stay tuned for live updates, match results, and more starting this
-            August.
-          </p>
-        </div>
-        <div className="text-center text-base font-bold flex justify-center">
-          <p>
-            <span className="text-blue-400">40+ Men’s</span>
-            <span className="text-gray-500"> teams and</span>
-            <span className="text-pink-400"> 70+ Women’s</span>
-            <span className="text-gray-500"> teams are here!</span>
-          </p>
-        </div>
-        <div className="flex flex-row justify-center gap-6 items-end md:gap-14 lg:gap-20">
-          <div
-            className="w-40 h-14 flex hover:cursor-pointer bg-white rounded-full items-center justify-center md:w-52 md:h-16"
-            onClick={() => navigate("/sports")}
-          >
-            <p className="text-black font-bold text-sm md:text-xl">
-              Get Started
-            </p>
+    <div className="flex flex-1 justify-between bg-[rgb(148,172,196)]">
+      <div className="flex-1 flex flex-col items-center justify-center">
+        <img src={logo_black} className="w-full xl:w-[80%] mb-[4vw]"/>
+        <div className="font-semibold text-[2vw] text-center mb-[1vw]">CONTACT US</div>
+        <div className="flex flex-col gap-[.3vw]">
+          <div className="flex gap-[1vw] items-center">
+            <img src={instagram_logo} className="w-[3vw] h-[3vw]"/>
+            <div className="text-[1.6vw] xl:text-[1.4vw]">VODASTATSPR</div>
+          </div>
+          <div className="flex gap-[1vw] items-center">
+            <img src={facebook_logo} className="w-[3vw] h-[3vw]"/>
+            <div className="text-[1.6vw] xl:text-[1.4vw]">VODA STATS PR</div>
+          </div>
+          <div className="flex gap-[1vw] items-center">
+            <img src={mail_logo} className="w-[3vw] h-[3vw]"/>
+            <div className="text-[1.6vw] xl:text-[1.4vw]">FELIX@VODASTATSPR.com</div>
           </div>
         </div>
-      </div> */}
-      <img src="/assets/about_us.svg" className="max-w-screen-xl m-auto w-[90%] border-2 border-[rgb(148,172,196)]"/>
+      </div>
+      <div className="flex-1 flex items-center">
+        <div className="bg-[rgb(250,246,245)] rounded-l-[4vw] w-full pl-[5vw] pr-[5vw] max-h-[100vh] py-[5vw] flex flex-col justify-center gap-[1vh]">
+          <div className="font-semibold text-[2vw]">VISION</div>
+          <div className="text-[1.6vw] xl:text-[1.4vw] text-gray-900 relative">
+            <img className="absolute -left-[3.5vw] top-[.2vw] w-[3vw]" src={bullet}/>
+            To empower high school athletes, coaches, and communities by providing
+            a comprehensive and accessible platform for tracking, analyzing, and 
+            celebrating achievements in high school sports.
+          </div>
+          <div className="h-[2px] bg-[rgb(148,172,196)]"></div>
+          <div className="font-semibold text-[2vw]">MISSION</div>
+          <div className="text-[1.6vw] xl:text-[1.4vw] relative">
+            <img className="absolute -left-[3.5vw] top-[.2vw] w-[3vw]"src={bullet}/>
+            Enhance transparency & accessbility
+          </div>
+          <div className="text-[1.6vw] xl:text-[1.4vw] relative">
+            <img className="absolute -left-[3.5vw] top-[.2vw] w-[3vw]"src={bullet}/>
+          Provide a centralized hub</div>
+          <div className="text-[1.6vw] xl:text-[1.4vw] relative">
+            <img className="absolute -left-[3.5vw] top-[.2vw] w-[3vw]"src={bullet}/>
+          Empower athletes and coaches</div>
+          <div className="text-[1.6vw] xl:text-[1.4vw] relative">
+            <img className="absolute -left-[3.5vw] top-[.2vw] w-[3vw]"src={bullet}/>
+          Celebrate achievements</div>
+          <div className="text-[1.6vw] xl:text-[1.4vw] relative">
+            <img className="absolute -left-[3.5vw] top-[.2vw] w-[3vw]"src={bullet}/>
+          Promote community engagement</div>
+          <div className="text-[1.6vw] xl:text-[1.4vw] relative">
+            <img className="absolute -left-[3.5vw] top-[.2vw] w-[3vw]"src={bullet}/>
+          Support growth and development</div>
+        </div>
+      </div>
     </div>
   );
 };
