@@ -15,10 +15,14 @@ export const SubMenu = ({
   setSelectedSubTab,
   selectedGender,
   setSelectedGender,
+  selectedYear,
+  setSelectedYear
 }) => {
   const navigate = useNavigate();
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showYearDropdown, setShowYearDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  const yearDropdownRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -41,6 +45,15 @@ export const SubMenu = ({
   const handleGenderSelect = (gender) => {
     setSelectedGender(gender);
     setShowDropdown(false);
+  };
+
+  const toggleYearDropdown = () => {
+    setShowYearDropdown(!showYearDropdown);
+  };
+
+  const handleYearSelect = (year) => {
+    setSelectedYear(year);
+    setShowYearDropdown(false);
   };
 
   return (
@@ -137,49 +150,96 @@ export const SubMenu = ({
           </div>
         </div>
         {/* Gender Dropdown */}
-        <div className="relative" ref={dropdownRef}>
-          <div
-            className="w-[198px] h-[68px] rounded-[12px] flex items-center py-[14px] px-[12px] bg-black hover:cursor-pointer justify-between"
-            onClick={toggleDropdown}
-          >
-            <div className="w-[40px] h-[40px] rounded-[10px] flex justify-center items-center bg-white">
-              <img
-                src={filter_icon}
-                alt="filter icon"
-                className="w-[22px] h-[22px]"
-              />
+        <div className="flex gap-2">
+          <div className="relative" ref={yearDropdownRef}>
+            <div
+              className="w-[198px] h-[68px] rounded-[12px] flex items-center py-[14px] px-[12px] bg-black hover:cursor-pointer justify-between"
+              onClick={toggleYearDropdown}
+            >
+              <div className="w-[40px] h-[40px] rounded-[10px] flex justify-center items-center bg-white">
+                <img
+                  src={filter_icon}
+                  alt="filter icon"
+                  className="w-[22px] h-[22px]"
+                />
+              </div>
+              <p className="font-bold text-[22px] text-white">{selectedYear}</p>
+              <div className="flex items-center justify-center h-full">
+                <img
+                  src={icon_dropdown1}
+                  alt="dropdown icon"
+                  className="w-[26px] h-[26px]"
+                />
+              </div>
             </div>
-            <p className="font-bold text-[22px] text-white">{selectedGender}</p>
-            <div className="flex items-center justify-center h-full">
-              <img
-                src={icon_dropdown1}
-                alt="dropdown icon"
-                className="w-[26px] h-[26px]"
-              />
-            </div>
+            {showYearDropdown && (
+              <div className="absolute top-[68px] w-[198px]">
+                {
+                  new Array(3).fill(0).map((_, it) => {
+                    const year = it + (new Date().getFullYear()) - 2;
+                    return (
+                      <div
+                        key={year}
+                        className="bg-[#DFE6ED] hover:bg-[#555] hover:text-white cursor-pointer py-[10px] px-[20px] flex justify-between"
+                        onClick={() => handleYearSelect(year)}
+                      >
+                        <p>{year}</p>
+                        {selectedYear == year && (
+                          <img className="w-[32px] h-[32px]" src={success_icon}></img>
+                        )}
+                      </div>
+                    )
+                  })
+                }
+                
+              </div>
+            )}
           </div>
-          {showDropdown && (
-            <div className="absolute top-[68px] w-[198px]">
-              <div
-                className="bg-[#DFE6ED] hover:bg-[#555] hover:text-white cursor-pointer py-[10px] px-[20px] flex justify-between"
-                onClick={() => handleGenderSelect("Men")}
-              >
-                <p>Men</p>
-                {selectedGender == "Men" && (
-                  <img className="w-[32px] h-[32px]" src={success_icon}></img>
-                )}
+
+          <div className="relative" ref={dropdownRef}>
+            <div
+              className="w-[198px] h-[68px] rounded-[12px] flex items-center py-[14px] px-[12px] bg-black hover:cursor-pointer justify-between"
+              onClick={toggleDropdown}
+            >
+              <div className="w-[40px] h-[40px] rounded-[10px] flex justify-center items-center bg-white">
+                <img
+                  src={filter_icon}
+                  alt="filter icon"
+                  className="w-[22px] h-[22px]"
+                />
               </div>
-              <div
-                className="bg-[#DFE6ED] hover:bg-[#555] hover:text-white cursor-pointer py-[10px] px-[20px] flex justify-between"
-                onClick={() => handleGenderSelect("Women")}
-              >
-                <p>Women</p>
-                {selectedGender == "Women" && (
-                  <img className="w-[32px] h-[32px]" src={success_icon}></img>
-                )}
+              <p className="font-bold text-[22px] text-white">{selectedGender}</p>
+              <div className="flex items-center justify-center h-full">
+                <img
+                  src={icon_dropdown1}
+                  alt="dropdown icon"
+                  className="w-[26px] h-[26px]"
+                />
               </div>
             </div>
-          )}
+            {showDropdown && (
+              <div className="absolute top-[68px] w-[198px]">
+                <div
+                  className="bg-[#DFE6ED] hover:bg-[#555] hover:text-white cursor-pointer py-[10px] px-[20px] flex justify-between"
+                  onClick={() => handleGenderSelect("Men")}
+                >
+                  <p>Men</p>
+                  {selectedGender == "Men" && (
+                    <img className="w-[32px] h-[32px]" src={success_icon}></img>
+                  )}
+                </div>
+                <div
+                  className="bg-[#DFE6ED] hover:bg-[#555] hover:text-white cursor-pointer py-[10px] px-[20px] flex justify-between"
+                  onClick={() => handleGenderSelect("Women")}
+                >
+                  <p>Women</p>
+                  {selectedGender == "Women" && (
+                    <img className="w-[32px] h-[32px]" src={success_icon}></img>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
       {/* SubTabs Section */}

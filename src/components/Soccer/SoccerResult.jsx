@@ -8,7 +8,7 @@ import right_arrow from "../../assets/icons/right_arrow.png";
 import { SoccerResultCard } from "./SoccerResultCard";
 import teamlogo from "../../assets/teamlogo.png";
 
-export const SoccerResult = ({ selectedGender }) => {
+export const SoccerResult = ({ selectedGender, selectedYear }) => {
   const { teamsData, schedulesData } = SoccerStanding_Firestoreoverall();
 
   const formatDate = (date) => {
@@ -81,7 +81,7 @@ export const SoccerResult = ({ selectedGender }) => {
   const filteredDocuments = schedulesData.filter((result) => {
     const resultDate = new Date(result.Date);
     return (
-      result.Gender === selectedGender.charAt(0) &&
+      result.Gender === selectedGender.charAt(0) && 2000 + Number(result.Date.split("/")[2]) === selectedYear &&
       (filterOption === "all" ||
         (resultDate.getDate() === selectedDay.getDate() &&
           resultDate.getMonth() === selectedDay.getMonth() &&

@@ -6,14 +6,14 @@ import { VolleyballPlayers } from "./VolleyballPlayers";
 import { VolleyballSchedule } from "./VolleyballSchedule";
 import { VolleyballStats } from "./VolleyballStats";
 
-export const VolleyballDashboard = ({ selectedSubTab, selectedGender }) => {
+export const VolleyballDashboard = ({ selectedSubTab, selectedGender, selectedYear }) => {
   return (
     <>
       {selectedSubTab == "Standings" && (
-        <VolleyballStandings selectedGender={selectedGender} />
+        <VolleyballStandings selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {selectedSubTab == "Results" && (
-        <VolleyballResult selectedGender={selectedGender} />
+        <VolleyballResult selectedGender={selectedGender} selectedYear={selectedYear} />
       )}
       {selectedSubTab == "Teams" && (
         <VolleyballTeams selectedGender={selectedGender} />
@@ -22,10 +22,10 @@ export const VolleyballDashboard = ({ selectedSubTab, selectedGender }) => {
         <VolleyballPlayers selectedGender={selectedGender} />
       )}
       {selectedSubTab == "Schedule" && (
-        <VolleyballSchedule selectedGender={selectedGender} />
+        <VolleyballSchedule selectedGender={selectedGender} selectedYear={selectedYear} />
       )}
       {selectedSubTab == "Stats" && (
-        <VolleyballStats selectedGender={selectedGender} />
+        <VolleyballStats selectedGender={selectedGender} selectedYear={selectedYear} />
       )}
     </>
   );

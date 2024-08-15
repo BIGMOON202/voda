@@ -5,7 +5,7 @@ import { ViewStatsHeader } from "./ViewStatsHeader";
 import { StatsTable } from "../StatsTable";
 import { statsFirestoreOverall } from "../../hooks/statsFirestoreOverall";
 
-export const VolleyballStats = ({ selectedGender }) => {
+export const VolleyballStats = ({ selectedGender, selectedYear }) => {
   const { volleyballSchedules, volleyballTeams } = statsFirestoreOverall();
 
   const [modalOpen, setModalOpen] = useState(false);
@@ -13,7 +13,7 @@ export const VolleyballStats = ({ selectedGender }) => {
   const [selectedDoc, setSelectedDoc] = useState({});
 
   const filteredDocuments = volleyballSchedules.filter(
-    (doc) => doc.Gender === selectedGender.charAt(0)
+    (doc) => doc.Gender === selectedGender.charAt(0) && 2000 + Number(doc.Date.split("/")[2]) === selectedYear
   );
   const sortedDocuments = filteredDocuments.sort((a, b) => {
     const dateA = new Date(a.Date);

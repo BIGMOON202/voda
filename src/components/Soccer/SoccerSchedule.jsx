@@ -8,7 +8,7 @@ import { SoccerStanding_Firestoreoverall } from "../../hooks/SoccerStanding_Fire
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export const SoccerSchedule = ({ selectedGender }) => {
+export const SoccerSchedule = ({ selectedGender, selectedYear }) => {
   const { teamsData, schedulesData, error } = SoccerStanding_Firestoreoverall();
   const formatDate = (date) => {
     return {
@@ -64,7 +64,7 @@ export const SoccerSchedule = ({ selectedGender }) => {
   const filteredDocuments = schedulesData.filter((schedule) => {
     const scheduleDate = new Date(schedule.Date);
     return (
-      schedule.Gender === selectedGender.charAt(0) &&
+      schedule.Gender === selectedGender.charAt(0) && 2000 + Number(schedule.Date.split("/")[2]) === selectedYear &&
       (filterOption === "all" ||
         (scheduleDate.getDate() === selectedDay.getDate() &&
           scheduleDate.getMonth() === selectedDay.getMonth() &&

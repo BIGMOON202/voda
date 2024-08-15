@@ -5,23 +5,23 @@ import { SoccerTeams } from "./SoccerTeams";
 import { SoccerPlayers } from "./SoccerPlayers";
 import { SoccerResult } from "./SoccerResult";
 
-export const SoccerDashboard = ({ selectedSubTab, selectedGender }) => {
+export const SoccerDashboard = ({ selectedSubTab, selectedGender, selectedYear }) => {
   return (
     <>
       {selectedSubTab == "Standings" && (
-        <SoccerStandings selectedGender={selectedGender} />
+        <SoccerStandings selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {selectedSubTab == "Results" && (
-        <SoccerResult selectedGender={selectedGender} />
+        <SoccerResult selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {selectedSubTab == "Schedule" && (
-        <SoccerSchedule selectedGender={selectedGender} />
+        <SoccerSchedule selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {selectedSubTab == "Teams" && (
-        <SoccerTeams selectedGender={selectedGender} />
+        <SoccerTeams selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {selectedSubTab == "Players" && (
-        <SoccerPlayers selectedGender={selectedGender} />
+        <SoccerPlayers selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {/* {selectedSubTab == "Stats" && (
         <SoccerStats selectedGender={selectedGender} />

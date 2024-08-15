@@ -8,7 +8,7 @@ import { useFirestoreOverall } from "../../hooks/useFirestoreOverall";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export const VolleyballSchedule = ({ selectedGender }) => {
+export const VolleyballSchedule = ({ selectedGender, selectedYear }) => {
   const { teamsData, schedulesData, error } = useFirestoreOverall();
 
   const formatDate = (date) => {
@@ -85,7 +85,7 @@ export const VolleyballSchedule = ({ selectedGender }) => {
   };
 
   const filteredDocuments = schedulesData.filter((schedule) => {
-    if (view === "all") return schedule.Gender === selectedGender.charAt(0);
+    if (view === "all") return schedule.Gender === selectedGender.charAt(0) && 2000 + Number(schedule.Date.split("/")[2]) === selectedYear;
 
     const scheduleDate = new Date(schedule.Date);
     return (

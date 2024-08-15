@@ -4,14 +4,14 @@ import { BasketballStatsHeader } from "./BasketballStatsHeader";
 import { statsFirestoreOverall } from "../../hooks/statsFirestoreOverall";
 import { StatsTableBasketball } from "../StatsTableBasketball";
 
-export const BasketballStats = ({ selectedGender }) => {
+export const BasketballStats = ({ selectedGender, selectedYear }) => {
   const { basketballSchedules, basketballTeams } = statsFirestoreOverall();
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedSubDocs, setSelectedSubDocs] = useState([]);
   const [selectedDoc, setSelectedDoc] = useState({});
 
   const filteredDocuments = basketballSchedules.filter(
-    (doc) => doc.Gender === selectedGender.charAt(0)
+    (doc) => doc.Gender === selectedGender.charAt(0) && 2000 + Number(doc.Date.split("/")[2]) === selectedYear
   );
   const sortedDocuments = filteredDocuments.sort((a, b) => {
     const dateA = new Date(a.Date);

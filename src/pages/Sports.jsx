@@ -7,11 +7,12 @@ export const Sports = ({ }) => {
     const [selectedSport, setSelectedSport] = useState('Volleyball');
     const [selectedSubTab, setSelectedSubTab] = useState('Standings');
     const [selectedGender, setSelectedGender] = useState('Men');
+    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
 
     return (
         <>
-            <SubMenu selectedSport={selectedSport} setSelectedSport={setSelectedSport} selectedSubTab={selectedSubTab} setSelectedSubTab={setSelectedSubTab} selectedGender={selectedGender} setSelectedGender={setSelectedGender}/>
-            <Dashboard selectedSport={selectedSport} setSelectedSport={setSelectedSport} selectedSubTab={selectedSubTab} setSelectedSubTab={setSelectedSubTab} selectedGender={selectedGender} setSelectedGender={setSelectedGender}/>
+            <SubMenu selectedSport={selectedSport} setSelectedSport={setSelectedSport} selectedSubTab={selectedSubTab} setSelectedSubTab={setSelectedSubTab} selectedGender={selectedGender} setSelectedGender={setSelectedGender} selectedYear={selectedYear} setSelectedYear={setSelectedYear}/>
+            <Dashboard selectedSport={selectedSport} setSelectedSport={setSelectedSport} selectedSubTab={selectedSubTab} setSelectedSubTab={setSelectedSubTab} selectedGender={selectedGender} setSelectedGender={setSelectedGender} selectedYear={selectedYear}/>
         </>
 
     )

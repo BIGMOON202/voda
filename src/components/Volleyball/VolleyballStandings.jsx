@@ -4,7 +4,7 @@ import teamlogo from "../../assets/teamlogo.png";
 
 import { useFirestoreOverall } from "../../hooks/useFirestoreOverall";
 
-export const VolleyballStandings = ({ selectedGender }) => {
+export const VolleyballStandings = ({ selectedGender, selectedYear }) => {
   const calculateResult = (set1, set2, set3) => {
     const defaultScore = "0-0";
     const score1 = set1 || defaultScore;
@@ -41,7 +41,7 @@ export const VolleyballStandings = ({ selectedGender }) => {
     (team) => team.Gender === selectedGender.charAt(0)
   );
   const filteredSchedules = schedulesData.filter(
-    (schedule) => schedule.Gender === selectedGender.charAt(0)
+    (schedule) => schedule.Gender === selectedGender.charAt(0) && 2000 + Number(schedule.Date.split("/")[2]) === selectedYear
   );
 
   filteredTeams.forEach((team) => {

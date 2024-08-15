@@ -10,6 +10,7 @@ export const Dashboard = ({
   setSelectedSubTab,
   selectedGender,
   setSelectedGender,
+  selectedYear
 }) => {
   return (
     <div className="px-[40px]">
@@ -21,6 +22,7 @@ export const Dashboard = ({
           selectedSubTab={selectedSubTab}
           selectedGender={selectedGender}
           setSelectedGender={setSelectedGender}
+          selectedYear={selectedYear}
         />
       )}
       {selectedSport == "Soccer" && (
@@ -28,6 +30,7 @@ export const Dashboard = ({
           selectedSubTab={selectedSubTab}
           selectedGender={selectedGender}
           setSelectedGender={setSelectedGender}
+          selectedYear={selectedYear}
         />
       )}
       {selectedSport == "Basketball" && (
@@ -35,6 +38,7 @@ export const Dashboard = ({
           selectedSubTab={selectedSubTab}
           selectedGender={selectedGender}
           setSelectedGender={setSelectedGender}
+          selectedYear={selectedYear}
         />
       )}
     </div>

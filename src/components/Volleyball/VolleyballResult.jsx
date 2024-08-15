@@ -9,7 +9,7 @@ import right_arrow from "../../assets/icons/right_arrow.png";
 import { VolleyballResultCard } from "./VolleyballResultCard";
 import teamlogo from "../../assets/teamlogo.png";
 
-export const VolleyballResult = ({ selectedGender }) => {
+export const VolleyballResult = ({ selectedGender, selectedYear }) => {
   const { teamsData, schedulesData, error } = useFirestoreOverall();
   const formatDate = (date) => {
     return {
@@ -94,7 +94,7 @@ export const VolleyballResult = ({ selectedGender }) => {
   };
 
   const filteredDocuments = schedulesData.filter((result) => {
-    if (filterMode === "all") return result.Gender === selectedGender.charAt(0);
+    if (filterMode === "all") return result.Gender === selectedGender.charAt(0) && 2000 + Number(result.Date.split("/")[2]) === selectedYear;
     const resultDate = new Date(result.Date);
     return (
       result.Gender === selectedGender.charAt(0) &&

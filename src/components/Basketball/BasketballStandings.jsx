@@ -4,7 +4,7 @@ import teamlogo from "../../assets/teamlogo.png";
 
 import { BasketballStanding_Firestoreoverall } from "../../hooks/BasketballStanding_Firestoreoverall";
 
-export const BasketballStandings = ({ selectedGender }) => {
+export const BasketballStandings = ({ selectedGender, selectedYear }) => {
   const getTotalScore = (result) => {
     if (result.Score == null) {
       return [0, 0];
@@ -22,7 +22,7 @@ export const BasketballStandings = ({ selectedGender }) => {
     (team) => team.Gender === selectedGender.charAt(0)
   );
   const filteredSchedules = schedulesData.filter(
-    (schedule) => schedule.Gender === selectedGender.charAt(0)
+    (schedule) => schedule.Gender === selectedGender.charAt(0) && 2000 + Number(schedule.Date.split("/")[2]) === selectedYear
   );
 
   filteredTeams.forEach((team) => {
