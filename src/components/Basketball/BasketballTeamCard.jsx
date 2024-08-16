@@ -45,7 +45,7 @@ export const BasketballTeamCard = ({
               className="text-[16px] text-[#1766FF] hover:cursor-pointer"
               onClick={viewSchedules}
             >
-              Schedules
+              Schedule
             </p>
           </div>
         </div>
