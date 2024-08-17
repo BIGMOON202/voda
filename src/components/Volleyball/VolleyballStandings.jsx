@@ -91,7 +91,7 @@ export const VolleyballStandings = ({ selectedGender, selectedYear }) => {
     team.sortingValue =
       totalScore === 0
         ? -Infinity
-        : (team.TW_Score + team.CW_Score) / totalScore;
+        : (team.TW_Score + team.CW_Score) / totalScore + 1e-4 * (team.TW_Score + team.CW_Score);
   });
 
   const sortedDocuments = documents.sort(
