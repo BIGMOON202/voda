@@ -32,6 +32,7 @@ const fields = {
       "Set1",
       "Set2",
       "Set3",
+      "Location"
     ],
   },
   Basketball: {

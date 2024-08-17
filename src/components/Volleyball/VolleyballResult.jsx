@@ -213,6 +213,7 @@ export const VolleyballResult = ({ selectedGender, selectedYear }) => {
               team1_logo={teamAImageUrl}
               team2_logo={teamBImageUrl}
               Date={result.Date}
+              Location={result.Location}
             />
           );
         })}

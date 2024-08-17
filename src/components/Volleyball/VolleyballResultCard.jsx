@@ -1,5 +1,7 @@
 import React from "react";
 import polygon from "../../assets/icons/Polygon.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 export const VolleyballResultCard = ({
   type,
@@ -11,6 +13,7 @@ export const VolleyballResultCard = ({
   score2,
   totalScore,
   Date,
+  Location
 }) => {
   return (
     <div className="w-full h-[240px] border rounded-[12px] border-[#CFCFCF] flex flex-col">
@@ -113,8 +116,12 @@ export const VolleyballResultCard = ({
           </div>
         </div>
       </div>
-      <div className="w-full h-full flex items-center px-[30px]">
+      <div className="w-full h-full flex justify-between items-center px-[30px]">
         <p className="text-[18px]">{Date}</p>
+        <div className="flex gap-2 items-center">
+          <FontAwesomeIcon icon={faLocationDot} />
+          <p className="text-[18px]">{Location}</p>
+        </div>
       </div>
     </div>
   );

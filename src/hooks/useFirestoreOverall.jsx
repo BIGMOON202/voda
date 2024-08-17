@@ -51,16 +51,25 @@ const useFirestoreOverall = () => {
     const unsubscribe = onSnapshot(
       q,
       (querySnapshot) => {
-        const schedulesData = [];
-        querySnapshot.forEach((schedule) => {
-          const scheduleData = { id: schedule.id, ...schedule.data() };
-          // Fetch subcollection "volleyballstats"
-          fetchVolleyballStats(schedule.id).then((stats) => {
-            scheduleData.volleyballStats = stats;
-            schedulesData.push(scheduleData);
-            setSchedules(schedulesData);
-          });
+        const alldocs = querySnapshot.docs.map(it => it.data());
+        console.log('alldocs', alldocs);
+
+        Promise.all(
+          alldocs.map((schedule) => {
+            return new Promise((resolve) => {
+              // Fetch subcollection "volleyballstats"
+              fetchVolleyballStats(schedule.id).then((stats) => {
+                resolve({
+                  ...schedule,
+                  volleyballStats: stats
+                });
+              });
+            })
+          })
+        ).then(schedulesData => {
+          setSchedules(schedulesData);
         });
+
       },
       (err) => {
         setError(err);

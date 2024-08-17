@@ -11,6 +11,8 @@ import "react-datepicker/dist/react-datepicker.css";
 export const VolleyballSchedule = ({ selectedGender, selectedYear }) => {
   const { teamsData, schedulesData, error } = useFirestoreOverall();
 
+  console.log({teamsData, schedulesData, selectedGender, selectedYear})
+
   const formatDate = (date) => {
     return {
       weekday: date.toLocaleDateString("en-US", { weekday: "short" }),
