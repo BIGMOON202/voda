@@ -16,7 +16,7 @@ export const VolleyballDashboard = ({ selectedSubTab, selectedGender, selectedYe
         <VolleyballResult selectedGender={selectedGender} selectedYear={selectedYear} />
       )}
       {selectedSubTab == "Teams" && (
-        <VolleyballTeams selectedGender={selectedGender} />
+        <VolleyballTeams selectedGender={selectedGender} selectedYear={selectedYear} />
       )}
       {selectedSubTab == "Players" && (
         <VolleyballPlayers selectedGender={selectedGender} />

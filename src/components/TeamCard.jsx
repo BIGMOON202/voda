@@ -6,7 +6,7 @@ import ScheduleModal from "./ScheduleModal";
 import { useFirestoreRealtime } from "../hooks/useFirestoreRealtime";
 import { VolleyballPlayerCard } from "./Volleyball/VolleyballPlayerCard";
 
-export const TeamCard = ({ teamID, teamlogo, teamname, teamabr, bestteam }) => {
+export const TeamCard = ({ teamID, teamlogo, teamname, teamabr, bestteam, selectedGender, selectedYear }) => {
   const { documents, error } = useFirestoreRealtime("VolleyballPlayers");
   const filteredDocuments = documents.filter((doc) => doc.TeamName == teamabr);
   const [playerModalOpen, setPlayerModalOpen] = useState(false);
@@ -87,6 +87,8 @@ export const TeamCard = ({ teamID, teamlogo, teamname, teamabr, bestteam }) => {
         isOpen={scheduleModalOpen}
         onClose={() => setScheduleModalOpen(false)}
         teamabr={teamabr}
+        selectedGender={selectedGender}
+        selectedYear={selectedYear}
         header={
           <div className="w-full flex justify-center ">
             <p className="text-black text-2xl text-center font-bold">

@@ -1,11 +1,14 @@
 import React from "react";
 import { useFirestoreRealtime } from "../hooks/useFirestoreRealtime";
 
-const ScheduleModal = ({ isOpen, onClose, children, header, teamabr }) => {
+const ScheduleModal = ({ isOpen, onClose, children, header, teamabr, selectedGender, selectedYear }) => {
+  console.log("modal gender: ", selectedGender);
   const { documents, error } = useFirestoreRealtime("VolleyballSchedules");
+  
   const filteredDocuments = documents.filter(
-    (doc) => doc["TeamA"] == teamabr || doc["TeamB"] == teamabr
+    (doc) => (doc["TeamA"] == teamabr || doc["TeamB"] == teamabr) && doc["Gender"] === selectedGender.charAt(0) && 2000 + Number(doc.Date.split("/")[2]) === selectedYear
   );
+  console.log(filteredDocuments);
 
   function formatDate(inputDate) {
     const [month, day, year] = inputDate.split("/");
@@ -98,11 +101,14 @@ const ScheduleModal = ({ isOpen, onClose, children, header, teamabr }) => {
                         <th className="text-center border border-gray-300 w-[70px] text-white/80">
                           No
                         </th>
-                        <th className="text-center border border-gray-300 w-[300px] text-white/80">
+                        <th className="text-center border border-gray-300 w-[200px] text-white/80">
                           Date
                         </th>
-                        <th className="text-center border border-gray-300 w-[550px] text-white/80">
+                        <th className="text-center border border-gray-300 w-[450px] text-white/80">
                           Matchup
+                        </th>
+                        <th className="text-center border border-gray-300 w-[200px] text-white/80">
+                          Location
                         </th>
                         <th className="text-center border border-gray-300 w-[150px] text-white/80">
                           Result
@@ -132,7 +138,7 @@ const ScheduleModal = ({ isOpen, onClose, children, header, teamabr }) => {
                             </td>
                             <td className="text-center border border-gray-300">
                               <div className="flex justify-center">
-                                <div className="w-[250px] flex items-center">
+                                <div className="w-[200px] flex items-center">
                                   <p className="text-right flex-grow">
                                     {doc["TeamA"]}
                                   </p>
@@ -140,12 +146,15 @@ const ScheduleModal = ({ isOpen, onClose, children, header, teamabr }) => {
                                 <div className="w-[50px] flex items-center justify-center">
                                   <p className="font-bold">VS</p>
                                 </div>
-                                <div className="w-[250px] flex items-center">
+                                <div className="w-[200px] flex items-center">
                                   <p className="flex-grow text-left">
                                     {doc["TeamB"]}
                                   </p>
                                 </div>
                               </div>
+                            </td>
+                            <td className="text-center border border-gray-300">
+                              {doc["Location"]}
                             </td>
                             <td className="text-center border border-gray-300">
                               {calculateResult(

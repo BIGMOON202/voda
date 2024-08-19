@@ -3,7 +3,7 @@ import { TeamCard } from "../TeamCard";
 import teamlogo from "../../assets/teamlogo.png";
 import { useFirestoreRealtime } from "../../hooks/useFirestoreRealtime";
 
-export const VolleyballTeams = ({ selectedGender }) => {
+export const VolleyballTeams = ({ selectedGender, selectedYear }) => {
   const { documents, error } = useFirestoreRealtime("VolleyballTeams");
   const teams = [
     {
@@ -47,6 +47,8 @@ export const VolleyballTeams = ({ selectedGender }) => {
           teamname={team.TeamName}
           teamabr={team.Abbreviation}
           bestteam={false}
+          selectedGender={selectedGender}
+          selectedYear={selectedYear}
         />
       ))}
     </div>
