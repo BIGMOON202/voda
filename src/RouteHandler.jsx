@@ -17,6 +17,7 @@ import ExcelUpload from "./pages/ExcelUpload";
 import { EditStats } from "./pages/EditStats";
 import { Privacy } from "./pages/Privacy";
 import {Brackets} from "./pages/Brackets";
+import {PRHSAA} from "./pages/PRHSAA";
 
 export const RouteHandler = () => {
   const { currentUser, loading } = useAuth();
@@ -41,6 +42,7 @@ export const RouteHandler = () => {
         <Route path="/edit_stats" element={<EditStats />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/brackets" element={<Brackets />} />
+        <Route path="/PRHSAA" element={<PRHSAA />} />
       </Routes>
     </>
   );

@@ -93,6 +93,14 @@ export const TopMenu = ({ selectedTab, setSelectedTab }) => {
             </p>
             <p
               className={`text-[24px] hover:font-bold hover:cursor-pointer ${
+                location.pathname === "/PRHSAA" ? "font-bold underline" : ""
+              }`}
+              onClick={() => navigate("/PRHSAA")}
+            >
+              PRHSAA
+            </p>
+            <p
+              className={`text-[24px] hover:font-bold hover:cursor-pointer ${
                 location.pathname === "/brackets" ? "font-bold underline" : ""
               }`}
               onClick={() => navigate("/brackets")}
