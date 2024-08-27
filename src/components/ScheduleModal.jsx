@@ -2,13 +2,11 @@ import React from "react";
 import { useFirestoreRealtime } from "../hooks/useFirestoreRealtime";
 
 const ScheduleModal = ({ isOpen, onClose, children, header, teamabr, selectedGender, selectedYear }) => {
-  console.log("modal gender: ", selectedGender);
   const { documents, error } = useFirestoreRealtime("VolleyballSchedules");
   
   const filteredDocuments = documents.filter(
     (doc) => (doc["TeamA"] == teamabr || doc["TeamB"] == teamabr) && doc["Gender"] === selectedGender.charAt(0) && 2000 + Number(doc.Date.split("/")[2]) === selectedYear
   );
-  console.log(filteredDocuments);
 
   function formatDate(inputDate) {
     const [month, day, year] = inputDate.split("/");
