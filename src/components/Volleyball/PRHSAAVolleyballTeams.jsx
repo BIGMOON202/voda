@@ -49,6 +49,7 @@ export const PRHSAAVolleyballTeams = ({ selectedGender, selectedYear }) => {
           bestteam={false}
           selectedGender={selectedGender}
           selectedYear={selectedYear}
+          category="PRHSAA"
         />
       ))}
     </div>

@@ -1,31 +1,31 @@
 import React from "react";
-import { BasketballStandings } from "./BasketballStandings";
-import { BasketballSchedule } from "./BasketballSchedule";
+import { PRHSAABasketballStandings } from "./PRHSAABasketballStandings";
+import { PRHSAABasketballSchedule } from "./PRHSAABasketballSchedule";
 import { PRHSAABasketballTeams } from "./PRHSAABasketballTeams";
-import { BasketballPlayers } from "./BasketballPlayers";
-import { BasketballResult } from "./BasketballResult";
-import { BasketballStats } from "./BasketballStats";
+import { PRHSAABasketballPlayers } from "./PRHSAABasketballPlayers";
+import { PRHSAABasketballResult } from "./PRHSAABasketballResult";
+import { PRHSAABasketballStats } from "./PRHSAABasketballStats";
 
 export const PRHSAABasketballDashboard = ({ selectedSubTab, selectedGender, selectedYear }) => {
   return (
     <>
       {selectedSubTab == "Standings" && (
-        <BasketballStandings selectedGender={selectedGender} selectedYear={selectedYear}/>
+        <PRHSAABasketballStandings selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {selectedSubTab == "Results" && (
-        <BasketballResult selectedGender={selectedGender} selectedYear={selectedYear}/>
+        <PRHSAABasketballResult selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {selectedSubTab == "Schedule" && (
-        <BasketballSchedule selectedGender={selectedGender} selectedYear={selectedYear}/>
+        <PRHSAABasketballSchedule selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {selectedSubTab == "Teams" && (
         <PRHSAABasketballTeams selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {selectedSubTab == "Players" && (
-        <BasketballPlayers selectedGender={selectedGender} selectedYear={selectedYear}/>
+        <PRHSAABasketballPlayers selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {selectedSubTab == "Stats" && (
-        <BasketballStats selectedGender={selectedGender} selectedYear={selectedYear}/>
+        <PRHSAABasketballStats selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
     </>
   );

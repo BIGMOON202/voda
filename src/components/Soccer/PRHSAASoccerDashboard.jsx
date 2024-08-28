@@ -2,7 +2,7 @@ import React from "react";
 import { PRHSAASoccerStandings } from "./PRHSAASoccerStandings";
 import { PRHSAASoccerSchedule } from "./PRHSAASoccerSchedule";
 import { PRHSAASoccerTeams } from "./PRHSAASoccerTeams";
-import { SoccerPlayers } from "./SoccerPlayers";
+import { PRHSAASoccerPlayers } from "./PRHSAASoccerPlayers";
 import { PRHSAASoccerResult } from "./PRHSAASoccerResult";
 
 export const PRHSAASoccerDashboard = ({ selectedSubTab, selectedGender, selectedYear }) => {
@@ -21,7 +21,7 @@ export const PRHSAASoccerDashboard = ({ selectedSubTab, selectedGender, selected
         <PRHSAASoccerTeams selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {selectedSubTab == "Players" && (
-        <SoccerPlayers selectedGender={selectedGender} selectedYear={selectedYear}/>
+        <PRHSAASoccerPlayers selectedGender={selectedGender} selectedYear={selectedYear}/>
       )}
       {/* {selectedSubTab == "Stats" && (
         <SoccerStats selectedGender={selectedGender} />

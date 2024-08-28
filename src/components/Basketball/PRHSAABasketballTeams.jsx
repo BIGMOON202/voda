@@ -48,6 +48,7 @@ export const PRHSAABasketballTeams = ({ selectedGender }) => {
           teamabr={team.Abbreviation}
           teamGender={team.Gender}
           bestteam={false}
+          category="PRHSAA"
         />
       ))}
     </div>

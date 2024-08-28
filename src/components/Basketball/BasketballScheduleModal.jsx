@@ -1,5 +1,6 @@
 import React from "react";
 import { useFirestoreRealtime } from "../../hooks/useFirestoreRealtime";
+import { PRHSAAuseFirestoreRealtime } from "../../hooks/PRHSAAuseFirestoreRealtime";
 
 const BasketballScheduleModal = ({
   isOpen,
@@ -8,8 +9,14 @@ const BasketballScheduleModal = ({
   header,
   teamabr,
   teamGender,
+  category
 }) => {
-  const { documents, error } = useFirestoreRealtime("BasketballSchedules");
+  let { documents, error } = [];
+  if(category == "PRHSAA"){
+    ({ documents, error } = PRHSAAuseFirestoreRealtime("PRHSAABasketballSchedules"));
+  } else {
+    ({ documents, error } = useFirestoreRealtime("BasketballSchedules"));
+  }
   const filteredDocuments = documents.filter(
     (doc) =>
       (doc["TeamA"] == teamabr || doc["TeamB"] == teamabr) &&

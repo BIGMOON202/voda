@@ -4,6 +4,7 @@ import Modal from "../Modal";
 import SoccerScheduleModal from "./SoccerScheduleModal";
 
 import { useFirestoreRealtime } from "../../hooks/useFirestoreRealtime";
+import { PRHSAAuseFirestoreRealtime } from "../../hooks/PRHSAAuseFirestoreRealtime";
 import { SoccerPlayerCard } from "./SoccerPlayerCard";
 
 export const SoccerTeamCard = ({
@@ -13,8 +14,14 @@ export const SoccerTeamCard = ({
   teamabr,
   bestteam,
   teamGender,
+  category
 }) => {
-  const { documents, error } = useFirestoreRealtime("SoccerPlayers");
+  let { documents, error } = [];
+  if(category == "PRHSAA"){
+  ({ documents, error } = PRHSAAuseFirestoreRealtime("PRHSAASoccerPlayers"));
+  } else {
+    ({ documents, error } = useFirestoreRealtime("SoccerPlayers"));
+  }
   const filteredDocuments = documents.filter(
     (doc) => doc.TeamName == teamabr && doc.Gender == teamGender
   );
@@ -102,6 +109,7 @@ export const SoccerTeamCard = ({
         onClose={() => setScheduleModalOpen(false)}
         teamabr={teamabr}
         teamGender={teamGender}
+        category={category}
         header={
           <div className="w-full flex justify-center ">
             <div className="flex flex-col items-center">
