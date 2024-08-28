@@ -2,7 +2,7 @@ import React from "react";
 import { VolleyballStandingRow } from "./VolleyballStandingRow";
 import teamlogo from "../../assets/teamlogo.png";
 
-import { useFirestoreOverall } from "../../hooks/useFirestoreOverall";
+import { PRHSAAuseFirestoreOverall } from "../../hooks/PRHSAAuseFirestoreOverall";
 
 export const PRHSAAVolleyballStandings = ({ selectedGender, selectedYear }) => {
   const calculateResult = (set1, set2, set3) => {
@@ -27,7 +27,7 @@ export const PRHSAAVolleyballStandings = ({ selectedGender, selectedYear }) => {
     return { teamASetsWon, teamBSetsWon };
   };
 
-  const { teamsData, schedulesData, error } = useFirestoreOverall();
+  const { teamsData, schedulesData, error } = PRHSAAuseFirestoreOverall();
 
   const documents = [];
 
@@ -45,7 +45,7 @@ export const PRHSAAVolleyballStandings = ({ selectedGender, selectedYear }) => {
   );
 
   filteredTeams.forEach((team) => {
-    const teamRow = { CW_Score: 0, CL_Score: 0, TW_Score: 0, TL_Score: 0 };
+    const teamRow = { HW_Score: 0, HL_Score: 0, AW_Score: 0, AL_Score: 0 };
     teamRow.name = team.TeamName;
     teamRow.imageUrl = team.imageUrl;
     const subFilteredSchedules = filteredSchedules.filter((schedule) => {
@@ -61,23 +61,19 @@ export const PRHSAAVolleyballStandings = ({ selectedGender, selectedYear }) => {
         data["Set2"],
         data["Set3"]
       );
-      if (
-        (data["TeamA"] === team.Abbreviation && teamASetsWon > teamBSetsWon) ||
-        (data["TeamB"] === team.Abbreviation && teamASetsWon < teamBSetsWon)
-      ) {
-        if (data.Type === "C") {
-          teamRow.CW_Score += 1;
-        } else {
-          teamRow.TW_Score += 1;
+      if(data["TeamA"] === team.Abbreviation){
+        if(teamASetsWon > teamBSetsWon) {
+          teamRow.HW_Score += 1;
         }
-      } else if (
-        (data["TeamA"] === team.Abbreviation && teamASetsWon < teamBSetsWon) ||
-        (data["TeamB"] === team.Abbreviation && teamASetsWon > teamBSetsWon)
-      ) {
-        if (data.Type === "C") {
-          teamRow.CL_Score += 1;
-        } else {
-          teamRow.TL_Score += 1;
+        else {
+          teamRow.HL_Score += 1;
+        }
+      } else if(data["TeamB"] === team.Abbreviation){
+        if(teamASetsWon > teamBSetsWon) {
+          teamRow.AL_Score += 1;
+        }
+        else {
+          teamRow.AW_Score += 1;
         }
       }
     });
@@ -87,11 +83,11 @@ export const PRHSAAVolleyballStandings = ({ selectedGender, selectedYear }) => {
 
   documents.forEach((team) => {
     const totalScore =
-      team.TW_Score + team.CW_Score + team.TL_Score + team.CL_Score;
+      team.AW_Score + team.HW_Score + team.AL_Score + team.HL_Score;
     team.sortingValue =
       totalScore === 0
         ? -Infinity
-        : (team.TW_Score + team.CW_Score) / totalScore + 1e-4 * (team.TW_Score + team.CW_Score);
+        : (team.AW_Score + team.HW_Score) / totalScore + 1e-4 * (team.AW_Score + team.HW_Score);
   });
 
   const sortedDocuments = documents.sort(
@@ -122,11 +118,11 @@ export const PRHSAAVolleyballStandings = ({ selectedGender, selectedYear }) => {
               key={index}
               teamlogo={team.imageUrl}
               teamname={team.name}
-              overall={`${team.CW_Score + team.TW_Score} - ${
-                team.CL_Score + team.TL_Score
+              overall={`${team.HW_Score + team.AW_Score} - ${
+                team.HL_Score + team.AL_Score
               }`}
-              tournament={`${team.TW_Score} - ${team.TL_Score}`}
-              conference={`${team.CW_Score} - ${team.CL_Score}`}
+              tournament={`${team.HW_Score} - ${team.HL_Score}`}
+              conference={`${team.AW_Score} - ${team.AL_Score}`}
             />
           );
         })}

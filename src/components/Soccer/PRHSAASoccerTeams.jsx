@@ -1,10 +1,10 @@
 import React from "react";
-import { TeamCard } from "../TeamCard";
+import { SoccerTeamCard } from "./SoccerTeamCard";
 import teamlogo from "../../assets/teamlogo.png";
-import { useFirestoreRealtime } from "../../hooks/useFirestoreRealtime";
+import { PRHSAAuseFirestoreRealtime } from "../../hooks/PRHSAAuseFirestoreRealtime";
 
-export const PRHSAAVolleyballTeams = ({ selectedGender, selectedYear }) => {
-  const { documents, error } = useFirestoreRealtime("PRHSAAVolleyballTeams");
+export const PRHSAASoccerTeams = ({ selectedGender }) => {
+  const { documents, error } = PRHSAAuseFirestoreRealtime("PRHSAASoccerTeams");
   const teams = [
     {
       teamlogo: teamlogo,
@@ -40,15 +40,14 @@ export const PRHSAAVolleyballTeams = ({ selectedGender, selectedYear }) => {
   return (
     <div className="grid grid-cols-2 gap-x-[50px] gap-y-[20px]">
       {filteredDocuments.map((team, index) => (
-        <TeamCard
+        <SoccerTeamCard
           key={team.id}
           teamID={team.id}
           teamlogo={team.imageUrl}
           teamname={team.TeamName}
           teamabr={team.Abbreviation}
+          teamGender={team.Gender}
           bestteam={false}
-          selectedGender={selectedGender}
-          selectedYear={selectedYear}
         />
       ))}
     </div>

@@ -36,6 +36,9 @@ function SportsDataManagement() {
     { name: "Volleyball", categories: ["Teams", "Players", "Schedules"] },
     { name: "Soccer", categories: ["Teams", "Players", "Schedules"] },
     { name: "Basketball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "PRHSAAVolleyball", categories: ["Teams", "Players", "Schedules"]},
+    { name: "PRHSAASoccer", categories: ["Teams", "Players", "Schedules"]},
+    { name: "PRHSAABasketball", categories: ["Teams", "Players", "Schedules"]},
   ];
 
   const activeStyle = "bg-blue-600";

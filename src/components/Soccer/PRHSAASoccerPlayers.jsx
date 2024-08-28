@@ -1,10 +1,10 @@
 import React from "react";
-import { VolleyballPlayerCard } from "./VolleyballPlayerCard";
-import { useFirestoreRealtime } from "../../hooks/useFirestoreRealtime";
+import { SoccerPlayerCard } from "./SoccerPlayerCard";
+import { PRHSAAuseFirestoreRealtime } from "../../hooks/PRHSAAuseFirestoreRealtime";
 
-export const PRHSAAVolleyballPlayers = ({ selectedGender }) => {
-  const { documents, error } = useFirestoreRealtime(
-    "PRHSAAVolleyballPlayers",
+export const PRHSAASoccerPlayers = ({ selectedGender }) => {
+  const { documents, error } = PRHSAAuseFirestoreRealtime(
+    "PRHSAASoccerPlayers",
     selectedGender
   );
   const filteredDocuments = documents.filter(
@@ -13,7 +13,7 @@ export const PRHSAAVolleyballPlayers = ({ selectedGender }) => {
   return (
     <div className="flex flex-wrap gap-[20px]">
       {filteredDocuments.map((player, index) => (
-        <VolleyballPlayerCard
+        <SoccerPlayerCard
           key={player.id}
           TeamName={player.TeamName}
           Name={player.Name}

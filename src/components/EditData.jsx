@@ -63,6 +63,58 @@ const fields = {
     ],
     Schedules: ["Gender", "Date", "Type", "TeamA", "TeamB", "Score", "Penalty"],
   },
+  PRHSAAVolleyball: {
+    Teams: ["Gender", "TeamName", "Abbreviation"],
+    Players: [
+      "Gender",
+      "TeamName",
+      "Name",
+      "LastName",
+      "Number",
+      "Position",
+      "Height",
+      "Grade",
+    ],
+    Schedules: [
+      "Gender",
+      "Date",
+      "Type",
+      "TeamA",
+      "TeamB",
+      "Set1",
+      "Set2",
+      "Set3",
+      "Location"
+    ],
+  },
+  PRHSAABasketball: {
+    Teams: ["Gender", "TeamName", "Abbreviation"],
+    Players: [
+      "Gender",
+      "TeamName",
+      "Name",
+      "LastName",
+      "Number",
+      "Position",
+      "Height",
+      "Grade",
+    ],
+    Schedules: ["Gender", "Date", "Type", "TeamA", "TeamB", "Score"],
+  },
+  PRHSAASoccer: {
+    Teams: ["Gender", "TeamName", "Abbreviation"],
+    Players: [
+      "Gender",
+      "TeamName",
+      "Name",
+      "LastName",
+      "Number",
+      "Position",
+      "Height",
+      "Grade",
+    ],
+    Schedules: ["Gender", "Date", "Type", "TeamA", "TeamB", "Score", "Penalty"],
+  },
 };
 
 export const EditData = ({ activeSport, selectedCategory }) => {
@@ -150,7 +202,7 @@ export const EditData = ({ activeSport, selectedCategory }) => {
 
     json.forEach(async (row) => {
       let filteredDoc = [];
-      if (mergedString == "VolleyballSchedules") {
+      if (mergedString == "VolleyballSchedules" || mergedString == "PRHSAAVolleyballSchedules") {
         filteredDoc = documents.filter((doc) => {
           return (doc.Gender =
             row.Gender &&
@@ -162,7 +214,7 @@ export const EditData = ({ activeSport, selectedCategory }) => {
             doc.Set2 == row.Set2 &&
             doc.Set3 == row.Set3);
         });
-      } else if (mergedString == "SoccerSchedules") {
+      } else if (mergedString == "SoccerSchedules" || mergedString == "PRHSAASoccerSchedules") {
         filteredDoc = documents.filter((doc) => {
           return (doc.Gender =
             row.Gender &&
@@ -173,7 +225,7 @@ export const EditData = ({ activeSport, selectedCategory }) => {
             doc.Score == row.Score &&
             doc.Penalty == row.Penalty);
         });
-      } else if (mergedString == "BasketballSchedules") {
+      } else if (mergedString == "BasketballSchedules" || mergedString == "PRHSAABasketballSchedules") {
         filteredDoc = documents.filter((doc) => {
           return (doc.Gender =
             row.Gender &&

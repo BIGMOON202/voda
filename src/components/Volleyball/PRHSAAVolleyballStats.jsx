@@ -3,10 +3,10 @@ import { useFirestoreRealtime } from "../../hooks/useFirestoreRealtime";
 import Modal from "../Modal";
 import { ViewStatsHeader } from "./ViewStatsHeader";
 import { StatsTable } from "../StatsTable";
-import { statsFirestoreOverall } from "../../hooks/statsFirestoreOverall";
+import { PRHSAAstatsFirestoreOverall } from "../../hooks/PRHSAAstatsFirestoreOverall";
 
 export const PRHSAAVolleyballStats = ({ selectedGender, selectedYear }) => {
-  const { volleyballSchedules, volleyballTeams } = statsFirestoreOverall();
+  const { volleyballSchedules, volleyballTeams } = PRHSAAstatsFirestoreOverall();
 
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedSubDocs, setSelectedSubDocs] = useState([]);

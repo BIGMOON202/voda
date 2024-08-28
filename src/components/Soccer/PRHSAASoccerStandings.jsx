@@ -2,9 +2,9 @@ import React from "react";
 import { SoccerStandingRow } from "./SoccerStandingRow";
 import teamlogo from "../../assets/teamlogo.png";
 
-import { SoccerStanding_Firestoreoverall } from "../../hooks/SoccerStanding_Firestoreoverall";
+import { PRHSAASoccerStanding_Firestoreoverall } from "../../hooks/PRHSAASoccerStanding_Firestoreoverall";
 
-export const SoccerStandings = ({ selectedGender, selectedYear }) => {
+export const PRHSAASoccerStandings = ({ selectedGender, selectedYear }) => {
   const getTotalScore = (result) => {
     if (result.Score == null) {
       return [-1, -1];
@@ -13,7 +13,7 @@ export const SoccerStandings = ({ selectedGender, selectedYear }) => {
     }
   };
 
-  const { teamsData, schedulesData, error } = SoccerStanding_Firestoreoverall();
+  const { teamsData, schedulesData, error } = PRHSAASoccerStanding_Firestoreoverall();
 
   const documents = [];
 

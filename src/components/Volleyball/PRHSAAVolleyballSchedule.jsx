@@ -3,13 +3,13 @@ import { VolleyballScheduleRow } from "./VolleyballScheduleRow";
 
 import left_arrow from "../../assets/icons/left_arrow.png";
 import right_arrow from "../../assets/icons/right_arrow.png";
-import { useFirestoreOverall } from "../../hooks/useFirestoreOverall";
+import { PRHSAAuseFirestoreOverall } from "../../hooks/PRHSAAuseFirestoreOverall";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export const PRHSAAVolleyballSchedule = ({ selectedGender, selectedYear }) => {
-  const { teamsData, schedulesData, error } = useFirestoreOverall();
+  const { teamsData, schedulesData, error } = PRHSAAuseFirestoreOverall();
 
   console.log({teamsData, schedulesData, selectedGender, selectedYear})
 

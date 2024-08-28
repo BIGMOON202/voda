@@ -1,9 +1,9 @@
 import React from "react";
 import { PRHSAAVolleyballDashboard } from "./Volleyball/PRHSAAVolleyballDashboard";
-import { SoccerDashboard } from "./Soccer/SoccerDashboard";
-import { BasketballDashboard } from "./Basketball/BasketballDashboard";
+import { PRHSAASoccerDashboard } from "./Soccer/PRHSAASoccerDashboard";
+import { PRHSAABasketballDashboard } from "./Basketball/PRHSAABasketballDashboard";
 
-export const DashboardPRHSAA = ({
+export const PRHSAADashboard = ({
   selectedSport,
   setSelectedSport,
   selectedSubTab,
@@ -26,7 +26,7 @@ export const DashboardPRHSAA = ({
         />
       )}
       {selectedSport == "Soccer" && (
-        <SoccerDashboard
+        <PRHSAASoccerDashboard
           selectedSubTab={selectedSubTab}
           selectedGender={selectedGender}
           setSelectedGender={setSelectedGender}
@@ -34,7 +34,7 @@ export const DashboardPRHSAA = ({
         />
       )}
       {selectedSport == "Basketball" && (
-        <BasketballDashboard
+        <PRHSAABasketballDashboard
           selectedSubTab={selectedSubTab}
           selectedGender={selectedGender}
           setSelectedGender={setSelectedGender}
