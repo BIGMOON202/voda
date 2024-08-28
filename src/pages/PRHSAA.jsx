@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { SubMenu } from '../components/SubMenu';
-import { Dashboard } from '../components/Dashboard';
+import { DashboardPRHSAA } from '../components/DashboardPRHSAA';
 
 export const PRHSAA = ({ }) => {
 
@@ -12,7 +12,7 @@ export const PRHSAA = ({ }) => {
     return (
         <>
             <SubMenu selectedSport={selectedSport} setSelectedSport={setSelectedSport} selectedSubTab={selectedSubTab} setSelectedSubTab={setSelectedSubTab} selectedGender={selectedGender} setSelectedGender={setSelectedGender} selectedYear={selectedYear} setSelectedYear={setSelectedYear}/>
-            <Dashboard selectedSport={selectedSport} setSelectedSport={setSelectedSport} selectedSubTab={selectedSubTab} setSelectedSubTab={setSelectedSubTab} selectedGender={selectedGender} setSelectedGender={setSelectedGender} selectedYear={selectedYear}/>
+            <DashboardPRHSAA selectedSport={selectedSport} setSelectedSport={setSelectedSport} selectedSubTab={selectedSubTab} setSelectedSubTab={setSelectedSubTab} selectedGender={selectedGender} setSelectedGender={setSelectedGender} selectedYear={selectedYear}/>
         </>
 
     )
