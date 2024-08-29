@@ -57,27 +57,27 @@ export const BracketsSubMenu = ({ selectedTab, setSelectedTab, selectedSubTab, s
                     </p>
                 </div>
                 <div
-                    onClick={() => setSelectedSubTab("Soccer - Varisity Femenino")}
-                    className={`w-[240px] h-[48px] place-content-center rounded-[12px] hover: cursor-pointer ${selectedSubTab === "Soccer - Varisity Femenino" ? "bg-[#94ACC4]/30" : ""
+                    onClick={() => setSelectedSubTab("Soccer JR Varisity Masculino")}
+                    className={`w-[250px] h-[48px] place-content-center rounded-[12px] hover: cursor-pointer ${selectedSubTab === "Soccer JR Varisity Masculino" ? "bg-[#94ACC4]/30" : ""
                         }`}
                 >
                     <p
-                        className={`text-center text-[18px] ${selectedSubTab === "Soccer - Varisity Femenino" ? "font-bold" : ""
+                        className={`text-center text-[18px] ${selectedSubTab === "Soccer JR Varisity Masculino" ? "font-bold" : ""
                             }`}
                     >
-                        Soccer - Varisity Femenino
+                        Soccer JR Varisity Masculino
                     </p>
                 </div>
                 <div
-                    onClick={() => setSelectedSubTab("Soccer - Varisity Masculino")}
-                    className={`w-[240px] h-[48px] place-content-center rounded-[12px] hover: cursor-pointer ${selectedSubTab === "Soccer - Varisity Masculino" ? "bg-[#94ACC4]/30" : ""
+                    onClick={() => setSelectedSubTab("Soccer Varisity Masculino")}
+                    className={`w-[240px] h-[48px] place-content-center rounded-[12px] hover: cursor-pointer ${selectedSubTab === "Soccer Varisity Masculino" ? "bg-[#94ACC4]/30" : ""
                         }`}
                 >
                     <p
-                        className={`text-center text-[18px] ${selectedSubTab === "Soccer - Varisity Masculino" ? "font-bold" : ""
+                        className={`text-center text-[18px] ${selectedSubTab === "Soccer Varisity Masculino" ? "font-bold" : ""
                             }`}
                     >
-                        Soccer - Varisity Masculino
+                        Soccer Varisity Masculino
                     </p>
                 </div>
             </div>
