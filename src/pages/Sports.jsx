@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { SubMenu } from '../components/SubMenu';
 import { Dashboard } from '../components/Dashboard';
 
+// eslint-disable-next-line no-empty-pattern
 export const Sports = ({ }) => {
 
     const [selectedSport, setSelectedSport] = useState('Volleyball');

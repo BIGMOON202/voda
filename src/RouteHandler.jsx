@@ -10,6 +10,7 @@ import { TopMenu } from "./components/TopMenu";
 import { Aboutus } from "./pages/Aboutus";
 import { Sponsors } from "./pages/Sponsors";
 import { Sports } from "./pages/Sports";
+import { National } from "./pages/National";
 import { SignIn } from "./auth/SignIn";
 import { SignUp } from "./auth/SignUp";
 import { useAuth } from "./auth/AuthContext";
@@ -36,6 +37,7 @@ export const RouteHandler = () => {
         <Route path="/sports" element={currentUser ? <Sports /> : <Navigate replace to="/signin" />} /> */}
         <Route path="/" element={<Navigate replace to="/aboutus" />} />
         <Route path="/sports" element={<Sports />} />
+        <Route path="/national_championship" element={<National />} />
         <Route path="/aboutus" element={<Aboutus />} />
         {/* <Route path="/sponsors" element={<Sponsors />} /> */}
         <Route path="/upload" element={<ExcelUpload />} />

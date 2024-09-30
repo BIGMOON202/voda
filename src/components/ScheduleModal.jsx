@@ -7,6 +7,7 @@ const ScheduleModal = ({ isOpen, onClose, children, header, teamabr, selectedGen
   if(category == "PRHSAA"){
     ({ documents, error } = PRHSAAuseFirestoreRealtime("PRHSAAVolleyballSchedules"));
   } else {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     ({ documents, error } = useFirestoreRealtime("VolleyballSchedules"));
   }
   

@@ -52,7 +52,7 @@ const useFirestoreOverall = () => {
       q,
       (querySnapshot) => {
         const alldocs = querySnapshot.docs.map(it => it.data());
-        console.log('alldocs', alldocs);
+        // console.log('alldocs', alldocs);
 
         Promise.all(
           alldocs.map((schedule) => {

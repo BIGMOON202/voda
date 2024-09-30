@@ -91,6 +91,14 @@ export const TopMenu = ({ selectedTab, setSelectedTab }) => {
             >
               Sports
             </p>
+            <p
+              className={`text-[24px] hover:font-bold hover:cursor-pointer ${
+                location.pathname === "/national_championship" ? "font-bold underline" : ""
+              }`}
+              onClick={() => navigate("/national_championship")}
+            >
+              National Championship
+            </p>
             {/* <p
               className={`text-[24px] hover:font-bold hover:cursor-pointer ${
                 location.pathname === "/PRHSAA" ? "font-bold underline" : ""
