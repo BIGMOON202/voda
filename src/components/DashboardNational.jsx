@@ -1,5 +1,5 @@
 import React from "react";
-import { VolleyballDashboard } from "./Volleyball/VolleyballDashboard";
+import { VolleyballDashboardNational } from "./Volleyball/VolleyballDashboardNational";
 import { SoccerDashboard } from "./Soccer/SoccerDashboard";
 import { BasketballDashboard } from "./Basketball/BasketballDashboard";
 
@@ -16,10 +16,10 @@ export const DashboardNational = ({
         {selectedSport} {selectedSubTab}
       </p>
       {selectedSport == "Volleyball" && (
-        <VolleyballDashboard
+        <VolleyballDashboardNational
           selectedSubTab={selectedSubTab}
           selectedGender={selectedGender}
-        //   setSelectedGender={setSelectedGender}
+          selectedCategory={selectedCategory}
           selectedYear={selectedYear}
         />
       )}
@@ -27,7 +27,7 @@ export const DashboardNational = ({
         <SoccerDashboard
           selectedSubTab={selectedSubTab}
           selectedGender={selectedGender}
-        //   setSelectedGender={setSelectedGender}
+          selectedCategory={selectedCategory}
           selectedYear={selectedYear}
         />
       )}
@@ -35,7 +35,7 @@ export const DashboardNational = ({
         <BasketballDashboard
           selectedSubTab={selectedSubTab}
           selectedGender={selectedGender}
-        //   setSelectedGender={setSelectedGender}
+          selectedCategory={selectedCategory}
           selectedYear={selectedYear}
         />
       )}

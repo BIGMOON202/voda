@@ -5,8 +5,8 @@ import { DashboardNational } from '../components/DashboardNational';
 export const National = () => {
 
     const [selectedSport, setSelectedSport] = useState('Volleyball');
-    const [selectedCategory, setSelectedCategory] = useState('Masculino Mini');
-    const [selectedSubTab, setSelectedSubTab] = useState('Standings');
+    const [selectedCategory, setSelectedCategory] = useState('MM');
+    const [selectedSubTab, setSelectedSubTab] = useState('Results');
     const [selectedGender, setSelectedGender] = useState('Men');
     const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
 

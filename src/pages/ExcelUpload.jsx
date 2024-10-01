@@ -12,14 +12,15 @@ function SportsDataManagement() {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user && user.email == "felix@vodastatspr.com") {
+      if (user && user.email === "felix@vodastatspr.com") {
+        /* empty */
       } else {
         navigate("/");
       }
     });
 
     return unsubscribe;
-  }, []);
+  }, [navigate]);
 
   const toggleSport = (sport) => {
     setActiveSport(sport);
@@ -36,60 +37,88 @@ function SportsDataManagement() {
     { name: "Volleyball", categories: ["Teams", "Players", "Schedules"] },
     { name: "Soccer", categories: ["Teams", "Players", "Schedules"] },
     { name: "Basketball", categories: ["Teams", "Players", "Schedules"] },
-    { name: "PRHSAAVolleyball", categories: ["Teams", "Players", "Schedules"]},
-    { name: "PRHSAASoccer", categories: ["Teams", "Players", "Schedules"]},
-    { name: "PRHSAABasketball", categories: ["Teams", "Players", "Schedules"]},
-    { name: "SoccerJRVarisityM", categories: ["Teams", "Players", "Schedules"]},
+    { name: "MFVolleyball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "MFSoccer", categories: ["Teams", "Players", "Schedules"] },
+    { name: "MFBasketball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "MMVolleyball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "MMSoccer", categories: ["Teams", "Players", "Schedules"] },
+    { name: "MMBasketball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "JFVolleyball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "JFSoccer", categories: ["Teams", "Players", "Schedules"] },
+    { name: "JFBasketball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "JMVolleyball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "JMSoccer", categories: ["Teams", "Players", "Schedules"] },
+    { name: "JMBasketball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "JRFVolleyball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "JRFSoccer", categories: ["Teams", "Players", "Schedules"] },
+    { name: "JRFBasketball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "JRMVolleyball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "JRMSoccer", categories: ["Teams", "Players", "Schedules"] },
+    { name: "JRMBasketball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "SFVolleyball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "SFSoccer", categories: ["Teams", "Players", "Schedules"] },
+    { name: "SFBasketball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "SMVolleyball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "SMSoccer", categories: ["Teams", "Players", "Schedules"] },
+    { name: "SMBasketball", categories: ["Teams", "Players", "Schedules"] },
   ];
 
-  const activeStyle = "bg-blue-600";
-  const hoverStyle = "hover:bg-gray-400";
-  const inactiveStyle = "bg-gray-600";
-  const borderStyle = "border-r border-gray-600/10";
+  const activeStyle = "bg-green-600 text-white";  // Active button style with green color
+  const hoverStyle = "hover:bg-gray-300";         // Lighter hover effect
+  const inactiveStyle = "bg-gray-700 text-gray-200";  // Inactive button with darker background and lighter text
+  const borderStyle = "border-r border-gray-500";
+  const sidebarBg = "bg-gray-900";
 
   return (
-    <>
-      <div className="w-full h-[100px] bg-gray-500"></div>
-      <div className="flex bg-gray-800/10 text-white min-h-screen">
-        <div className={`w-64 space-y-2 p-5 ${borderStyle}`}>
-          {sports.map((sport) => (
-            <div key={sport.name} className="group">
-              <button
-                onClick={() => toggleSport(sport.name)}
-                className={`flex items-center justify-between w-full px-3 py-2 rounded-md ${
-                  activeSport === sport.name ? activeStyle : inactiveStyle
-                } ${hoverStyle} transition duration-300 ease-in-out`}
-              >
-                <span>{sport.name}</span>
-                {activeSport === sport.name ? (
-                  <ChevronDownIcon className="w-5 h-5" />
-                ) : (
-                  <ChevronRightIcon className="w-5 h-5" />
-                )}
-              </button>
-              <div
-                className={`flex flex-col gap-[5px] pt-[5px] ${
-                  activeSport === sport.name ? "block" : "hidden"
-                } pl-8`}
-              >
-                {sport.categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => selectCategory(category)}
-                    className={`w-full text-left px-3 py-1 rounded-md ${
-                      selectedCategory === category &&
-                      activeSport === sport.name
-                        ? activeStyle
-                        : inactiveStyle
-                    } ${hoverStyle} transition duration-300 ease-in-out`}
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
+    <div className="h-screen flex overflow-hidden">
+      {/* Left Sidebar: Sports Category Section */}
+      <div
+        className={`w-64 p-5 ${borderStyle} overflow-y-auto ${sidebarBg}`}
+        style={{ maxHeight: "100vh" }}
+      >
+        <h2 className="text-lg font-semibold mb-4 text-white">Sports Categories</h2>
+
+        {sports.map((sport) => (
+          <div key={sport.name} className="group">
+            <button
+              onClick={() => toggleSport(sport.name)}
+              className={`flex items-center justify-between w-full px-3 py-2 rounded-md ${activeSport === sport.name ? activeStyle : inactiveStyle
+                } ${hoverStyle} transition duration-300 ease-in-out hover:shadow-md`}
+              aria-label={`Toggle ${sport.name}`}
+            >
+              <span className="text-sm font-medium">{sport.name}</span>
+              {activeSport === sport.name ? (
+                <ChevronDownIcon className="w-5 h-5 text-white" />
+              ) : (
+                <ChevronRightIcon className="w-5 h-5 text-gray-400" />
+              )}
+            </button>
+            <div
+              className={`flex flex-col gap-2 pt-2 ${activeSport === sport.name ? "block" : "hidden"} pl-4 border-l-2 border-gray-500`}
+            >
+              {sport.categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => selectCategory(category)}
+                  className={`w-full text-left px-3 py-1 rounded-md text-sm ${selectedCategory === category && activeSport === sport.name
+                      ? activeStyle
+                      : inactiveStyle
+                    } ${hoverStyle} transition duration-300 ease-in-out hover:shadow-sm`}
+                  aria-label={`Select ${category} in ${sport.name}`}
+                >
+                  {category}
+                </button>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Right Section: Table Data */}
+      <div
+        className="flex-1 p-5 overflow-y-auto bg-gray-100"
+        style={{ maxHeight: "100vh" }}
+      >
         <EditData
           activeSport={activeSport}
           setActiveSport={setActiveSport}
@@ -97,7 +126,7 @@ function SportsDataManagement() {
           setSelectedCategory={setSelectedCategory}
         />
       </div>
-    </>
+    </div>
   );
 }
 

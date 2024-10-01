@@ -44,11 +44,6 @@ export const SubMenuNational = ({
         setShowDropdown(!showDropdown);
     };
 
-    // const handleGenderSelect = (gender) => {
-    //     setSelectedGender(gender);
-    //     setShowDropdown(false);
-    // };
-
     const toggleYearDropdown = () => {
         setShowYearDropdown(!showYearDropdown);
     };
@@ -242,30 +237,30 @@ export const SubMenuNational = ({
                         <tr>
                             <td className="border border-gray-300 px-4 py-2 text-center font-bold bg-[#94ACC4]/30">Masculino</td>
                             <td
-                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "Masculino Mini" ? "font-bold text-white bg-blue-500 rounded-md" : ""
+                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "MM" ? "font-bold text-white bg-blue-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("Masculino Mini")}
+                                onClick={() => setSelectedCategory("MM")}
                             >
                                 Mini
                             </td>
                             <td
-                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "Masculino Juvenil" ? "font-bold text-white bg-blue-500 rounded-md" : ""
+                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "JM" ? "font-bold text-white bg-blue-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("Masculino Juvenil")}
+                                onClick={() => setSelectedCategory("JM")}
                             >
                                 Juvenil
                             </td>
                             <td
-                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "Masculino Junior" ? "font-bold text-white bg-blue-500 rounded-md" : ""
+                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "JRM" ? "font-bold text-white bg-blue-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("Masculino Junior")}
+                                onClick={() => setSelectedCategory("JRM")}
                             >
                                 Junior
                             </td>
                             <td
-                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "Masculino Senior" ? "font-bold text-white bg-blue-500 rounded-md" : ""
+                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "SM" ? "font-bold text-white bg-blue-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("Masculino Senior")}
+                                onClick={() => setSelectedCategory("SM")}
                             >
                                 Senior
                             </td>
@@ -273,30 +268,30 @@ export const SubMenuNational = ({
                         <tr>
                             <td className="border border-gray-300 px-4 py-2 text-center font-bold bg-[#94ACC4]/30">Femenino</td>
                             <td
-                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "Femenino Mini" ? "font-bold text-white bg-pink-500 rounded-md" : ""
+                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "MF" ? "font-bold text-white bg-pink-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("Femenino Mini")}
+                                onClick={() => setSelectedCategory("MF")}
                             >
                                 Mini
                             </td>
                             <td
-                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "Femenino Juvenil" ? "font-bold text-white bg-pink-500 rounded-md" : ""
+                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "JF" ? "font-bold text-white bg-pink-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("Femenino Juvenil")}
+                                onClick={() => setSelectedCategory("JF")}
                             >
                                 Juvenil
                             </td>
                             <td
-                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "Femenino Junior" ? "font-bold text-white bg-pink-500 rounded-md" : ""
+                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "JRF" ? "font-bold text-white bg-pink-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("Femenino Junior")}
+                                onClick={() => setSelectedCategory("JRF")}
                             >
                                 Junior
                             </td>
                             <td
-                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "Femenino Senior" ? "font-bold text-white bg-pink-500 rounded-md" : ""
+                                className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "SF" ? "font-bold text-white bg-pink-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("Femenino Senior")}
+                                onClick={() => setSelectedCategory("SF")}
                             >
                                 Senior
                             </td>

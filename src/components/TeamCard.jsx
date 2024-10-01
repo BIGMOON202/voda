@@ -13,6 +13,7 @@ export const TeamCard = ({ teamID, teamlogo, teamname, teamabr, bestteam, select
   if (category === "PRHSAA") {
     ({ documents, error } = PRHSAAuseFirestoreRealtime("PRHSAAVolleyballPlayers"));
   } else {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     ({ documents, error } = useFirestoreRealtime("VolleyballPlayers"));
   }
 
