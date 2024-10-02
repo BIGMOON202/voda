@@ -2,14 +2,24 @@ import React from "react";
 import { useFirestoreRealtime } from "../hooks/useFirestoreRealtime";
 import { PRHSAAuseFirestoreRealtime } from "../hooks/PRHSAAuseFirestoreRealtime";
 
-const ScheduleModal = ({ isOpen, onClose, children, header, teamabr, selectedGender, selectedYear, category }) => {
+const ScheduleModal = ({ isOpen, onClose, children, header, teamabr, selectedGender, selectedYear, selectedCategory }) => {
   let { documents, error } = [];
-  if(category == "PRHSAA"){
-    ({ documents, error } = PRHSAAuseFirestoreRealtime("PRHSAAVolleyballSchedules"));
+  let col = '';
+  // if(category == "PRHSAA"){
+  //   ({ documents, error } = PRHSAAuseFirestoreRealtime("PRHSAAVolleyballSchedules"));
+  // } else {
+  //   // eslint-disable-next-line react-hooks/rules-of-hooks
+  //   ({ documents, error } = useFirestoreRealtime("VolleyballSchedules"));
+  // }
+  if(selectedCategory){
+    col = selectedCategory + "VolleyballSchedules";
   } else {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    ({ documents, error } = useFirestoreRealtime("VolleyballSchedules"));
+    col = "VolleyballSchedules";
   }
+
+    ({ documents, error } = useFirestoreRealtime(col));
+
+  console.log(documents);
   
   
   const filteredDocuments = documents.filter(

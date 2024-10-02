@@ -40,6 +40,7 @@ export const VolleyballTeams = ({ selectedGender, selectedCategory, selectedYear
           bestteam={false}
           selectedGender={selectedGender}
           selectedYear={selectedYear}
+          selectedCategory={selectedCategory}
         />
       ))}
     </div>

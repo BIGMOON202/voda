@@ -7,7 +7,7 @@ import { useFirestoreRealtime } from "../hooks/useFirestoreRealtime";
 import { PRHSAAuseFirestoreRealtime } from "../hooks/PRHSAAuseFirestoreRealtime";
 import { VolleyballPlayerCard } from "./Volleyball/VolleyballPlayerCard";
 
-export const TeamCardNational = ({ teamID, teamlogo, teamname, teamabr, bestteam, selectedGender, selectedYear, category }) => {
+export const TeamCardNational = ({ teamID, teamlogo, teamname, teamabr, bestteam, selectedGender, selectedYear, selectedCategory }) => {
 
   const [scheduleModalOpen, setScheduleModalOpen] = useState(false);
 
@@ -44,7 +44,7 @@ export const TeamCardNational = ({ teamID, teamlogo, teamname, teamabr, bestteam
         teamabr={teamabr}
         selectedGender={selectedGender}
         selectedYear={selectedYear}
-        category={category}
+        selectedCategory={selectedCategory}
         header={
           <div className="w-full flex justify-center ">
             <p className="text-black text-2xl text-center font-bold">
