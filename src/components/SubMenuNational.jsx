@@ -239,35 +239,35 @@ export const SubMenuNational = ({
                             <td
                                 className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "MM" ? "font-bold text-white bg-blue-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("MM")}
+                                onClick={() => {setSelectedCategory("MM"); setSelectedGender("Men");}}
                             >
                                 Mini
                             </td>
                             <td
                                 className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "JM" ? "font-bold text-white bg-blue-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("JM")}
+                                onClick={() => {setSelectedCategory("JM"); setSelectedGender("Men");}}
                             >
                                 Juvenil
                             </td>
                             <td
                                 className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "JRM" ? "font-bold text-white bg-blue-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("JRM")}
+                                onClick={() => {setSelectedCategory("JRM"); setSelectedGender("Men");}}
                             >
                                 Junior
                             </td>
                             <td
                                 className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "SM" ? "font-bold text-white bg-blue-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("SM")}
+                                onClick={() => {setSelectedCategory("SM"); setSelectedGender("Men");}}
                             >
                                 Senior
                             </td>
                             <td
                                 className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "PM" ? "font-bold text-white bg-blue-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("PM")}
+                                onClick={() => {setSelectedCategory("PM"); setSelectedGender("Men");}}
                             >
                                 Publicas
                             </td>
@@ -277,35 +277,35 @@ export const SubMenuNational = ({
                             <td
                                 className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "MF" ? "font-bold text-white bg-pink-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("MF")}
+                                onClick={() => {setSelectedCategory("MF"); setSelectedGender("Women");}}
                             >
                                 Mini
                             </td>
                             <td
                                 className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "JF" ? "font-bold text-white bg-pink-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("JF")}
+                                onClick={() => {setSelectedCategory("JF"); setSelectedGender("Women");}}
                             >
                                 Juvenil
                             </td>
                             <td
                                 className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "JRF" ? "font-bold text-white bg-pink-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("JRF")}
+                                onClick={() => {setSelectedCategory("JRF"); setSelectedGender("Women");}}
                             >
                                 Junior
                             </td>
                             <td
                                 className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "SF" ? "font-bold text-white bg-pink-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("SF")}
+                                onClick={() => {setSelectedCategory("SF"); setSelectedGender("Women");}}
                             >
                                 Senior
                             </td>
                             <td
                                 className={`border border-gray-300 px-4 py-2 hover:bg-gray-200 cursor-pointer transition-all duration-300 ease-in-out ${selectedCategory === "PF" ? "font-bold text-white bg-pink-500 rounded-md" : ""
                                     }`}
-                                onClick={() => setSelectedCategory("PF")}
+                                onClick={() => {setSelectedCategory("PF"); setSelectedGender("Women");}}
                             >
                                 Publicas
                             </td>

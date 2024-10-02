@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useFirestoreOverall } from "../../hooks/useFirestoreOverall";
+import { useFirestoreOverallNational } from "../../hooks/useFirestoreOverallNational";
 
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -9,8 +9,12 @@ import right_arrow from "../../assets/icons/right_arrow.png";
 import { VolleyballResultCard } from "./VolleyballResultCard";
 import teamlogo from "../../assets/teamlogo.png";
 
-export const VolleyballResult = ({ selectedGender, selectedYear }) => {
-  const { teamsData, schedulesData, error } = useFirestoreOverall();
+export const VolleyballResult = ({ selectedGender, selectedYear, selectedCategory }) => {
+  let col = '';
+  if(selectedCategory){
+    col = selectedCategory;
+  }
+  const { teamsData, schedulesData, error } = useFirestoreOverallNational(col);
   const formatDate = (date) => {
     return {
       weekday: date.toLocaleDateString("en-US", { weekday: "short" }),
@@ -190,7 +194,7 @@ export const VolleyballResult = ({ selectedGender, selectedYear }) => {
         </>
       )}
 
-      <div className="grid grid-cols-2 gap-[20px]">
+      <div className="grid grid-cols-2 gap-[20px] pb-[50px]">
         {filteredDocuments.map((result, index) => {
           const teamA = teamsData.filter(
             (team) => team.Abbreviation == result.TeamA

@@ -13,7 +13,7 @@ import {
   getDocs,
 } from "firebase/firestore";
 
-const useFirestoreOverall = () => {
+const useFirestoreOverallNational = (selectedCategory) => {
   const [teams, setTeams] = useState([]);
   const [schedules, setSchedules] = useState([]);
   const [error, setError] = useState(null);
@@ -30,7 +30,7 @@ const useFirestoreOverall = () => {
   }, []);
 
   const fetchTeams = () => {
-    const q = query(collection(db, "VolleyballTeams"));
+    const q = query(collection(db, `${selectedCategory}VolleyballTeams`));
     return onSnapshot(
       q,
       (querySnapshot) => {
@@ -47,7 +47,7 @@ const useFirestoreOverall = () => {
   };
 
   const fetchSchedules = () => {
-    const q = query(collection(db, "VolleyballSchedules"));
+    const q = query(collection(db, `${selectedCategory}VolleyballSchedules`));
     const unsubscribe = onSnapshot(
       q,
       (querySnapshot) => {
@@ -81,7 +81,7 @@ const useFirestoreOverall = () => {
 
   const fetchVolleyballStats = async (scheduleId) => {
     const q = query(
-      collection(db, `VolleyballSchedules/${scheduleId}/VolleyballStats`)
+      collection(db, `${selectedCategory}VolleyballSchedules/${scheduleId}/VolleyballStats`)
     );
     const statsData = [];
 
@@ -101,14 +101,9 @@ const useFirestoreOverall = () => {
     try {
       console.log(docId);
       const newCityRef = doc(
-        collection(db, "VolleyballSchedules", docId, "VolleyballStats")
+        collection(db, `${selectedCategory}VolleyballSchedules`, docId, "VolleyballStats")
       );
       await setDoc(newCityRef, subcollectionData);
-      // await setDoc(doc(db, col, docId, 'VolleyballStats', 'randomID-xyz'), {
-      //     name: "Los Angeles",
-      //     state: "CA",
-      //     country: "USA"
-      //   });
     } catch (err) {
       console.error("Error adding new document:", err);
       setError(err);
@@ -135,4 +130,4 @@ const useFirestoreOverall = () => {
   };
 };
 
-export { useFirestoreOverall };
+export { useFirestoreOverallNational };

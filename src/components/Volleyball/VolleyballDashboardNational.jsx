@@ -10,7 +10,7 @@ export const VolleyballDashboardNational = ({ selectedSubTab, selectedGender, se
   return (
     <>
       {selectedSubTab == "Results" && (
-        <VolleyballResult selectedGender={selectedGender} selectedYear={selectedYear} />
+        <VolleyballResult selectedGender={selectedGender} selectedYear={selectedYear} selectedCategory={selectedCategory} />
       )}
       {selectedSubTab == "Teams" && (
         <VolleyballTeams selectedGender={selectedGender} selectedCategory={selectedCategory} selectedYear={selectedYear} />
