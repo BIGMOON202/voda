@@ -24,20 +24,22 @@ export const DashboardNational = ({
         />
       )}
       {selectedSport == "Soccer" && (
-        <SoccerDashboard
-          selectedSubTab={selectedSubTab}
-          selectedGender={selectedGender}
-          selectedCategory={selectedCategory}
-          selectedYear={selectedYear}
-        />
+        <></>
+        // <SoccerDashboard
+        //   selectedSubTab={selectedSubTab}
+        //   selectedGender={selectedGender}
+        //   selectedCategory={selectedCategory}
+        //   selectedYear={selectedYear}
+        // />
       )}
       {selectedSport == "Basketball" && (
-        <BasketballDashboard
-          selectedSubTab={selectedSubTab}
-          selectedGender={selectedGender}
-          selectedCategory={selectedCategory}
-          selectedYear={selectedYear}
-        />
+        <></>
+        // <BasketballDashboard
+        //   selectedSubTab={selectedSubTab}
+        //   selectedGender={selectedGender}
+        //   selectedCategory={selectedCategory}
+        //   selectedYear={selectedYear}
+        // />
       )}
     </div>
   );

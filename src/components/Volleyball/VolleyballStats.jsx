@@ -5,8 +5,8 @@ import { ViewStatsHeader } from "./ViewStatsHeader";
 import { StatsTable } from "../StatsTable";
 import { statsFirestoreOverall } from "../../hooks/statsFirestoreOverall";
 
-export const VolleyballStats = ({ selectedGender, selectedYear }) => {
-  const { volleyballSchedules, volleyballTeams } = statsFirestoreOverall();
+export const VolleyballStats = ({ selectedGender, selectedYear, selectedCategory }) => {
+  const { volleyballSchedules, volleyballTeams } = statsFirestoreOverall(selectedCategory || "");
 
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedSubDocs, setSelectedSubDocs] = useState([]);

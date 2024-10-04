@@ -38,34 +38,20 @@ function SportsDataManagement() {
     { name: "Soccer", categories: ["Teams", "Players", "Schedules"] },
     { name: "Basketball", categories: ["Teams", "Players", "Schedules"] },
     { name: "MFVolleyball", categories: ["Teams", "Players", "Schedules"] },
-    { name: "MFSoccer", categories: ["Teams", "Players", "Schedules"] },
-    { name: "MFBasketball", categories: ["Teams", "Players", "Schedules"] },
     { name: "MMVolleyball", categories: ["Teams", "Players", "Schedules"] },
-    { name: "MMSoccer", categories: ["Teams", "Players", "Schedules"] },
-    { name: "MMBasketball", categories: ["Teams", "Players", "Schedules"] },
     { name: "JFVolleyball", categories: ["Teams", "Players", "Schedules"] },
-    { name: "JFSoccer", categories: ["Teams", "Players", "Schedules"] },
-    { name: "JFBasketball", categories: ["Teams", "Players", "Schedules"] },
     { name: "JMVolleyball", categories: ["Teams", "Players", "Schedules"] },
-    { name: "JMSoccer", categories: ["Teams", "Players", "Schedules"] },
-    { name: "JMBasketball", categories: ["Teams", "Players", "Schedules"] },
     { name: "JRFVolleyball", categories: ["Teams", "Players", "Schedules"] },
-    { name: "JRFSoccer", categories: ["Teams", "Players", "Schedules"] },
-    { name: "JRFBasketball", categories: ["Teams", "Players", "Schedules"] },
     { name: "JRMVolleyball", categories: ["Teams", "Players", "Schedules"] },
-    { name: "JRMSoccer", categories: ["Teams", "Players", "Schedules"] },
-    { name: "JRMBasketball", categories: ["Teams", "Players", "Schedules"] },
     { name: "SFVolleyball", categories: ["Teams", "Players", "Schedules"] },
-    { name: "SFSoccer", categories: ["Teams", "Players", "Schedules"] },
-    { name: "SFBasketball", categories: ["Teams", "Players", "Schedules"] },
     { name: "SMVolleyball", categories: ["Teams", "Players", "Schedules"] },
-    { name: "SMSoccer", categories: ["Teams", "Players", "Schedules"] },
-    { name: "SMBasketball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "PFVolleyball", categories: ["Teams", "Players", "Schedules"] },
+    { name: "PMVolleyball", categories: ["Teams", "Players", "Schedules"] },
   ];
 
-  const activeStyle = "bg-green-600 text-white";  // Active button style with green color
-  const hoverStyle = "hover:bg-gray-300";         // Lighter hover effect
-  const inactiveStyle = "bg-gray-700 text-gray-200";  // Inactive button with darker background and lighter text
+  const activeStyle = "bg-green-600 text-white";
+  const hoverStyle = "hover:bg-gray-300";
+  const inactiveStyle = "bg-gray-700 text-gray-200";
   const borderStyle = "border-r border-gray-500";
   const sidebarBg = "bg-gray-900";
 
