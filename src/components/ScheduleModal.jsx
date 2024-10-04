@@ -17,10 +17,7 @@ const ScheduleModal = ({ isOpen, onClose, children, header, teamabr, selectedGen
     col = "VolleyballSchedules";
   }
 
-    ({ documents, error } = useFirestoreRealtime(col));
-
-  console.log(documents);
-  
+    ({ documents, error } = useFirestoreRealtime(col));  
   
   const filteredDocuments = documents.filter(
     (doc) => (doc["TeamA"] == teamabr || doc["TeamB"] == teamabr) && doc["Gender"] === selectedGender.charAt(0) && 2000 + Number(doc.Date.split("/")[2]) === selectedYear

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { db } from "../firebase-config";
 import {
   collection,
@@ -27,7 +27,8 @@ const useFirestoreOverallNational = (selectedCategory) => {
       unsubscribeTeams();
       unsubscribeSchedules();
     };
-  }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selectedCategory]);
 
   const fetchTeams = () => {
     const q = query(collection(db, `${selectedCategory}VolleyballTeams`));

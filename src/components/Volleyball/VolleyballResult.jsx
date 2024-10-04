@@ -10,11 +10,9 @@ import { VolleyballResultCard } from "./VolleyballResultCard";
 import teamlogo from "../../assets/teamlogo.png";
 
 export const VolleyballResult = ({ selectedGender, selectedYear, selectedCategory }) => {
-  let col = '';
-  if(selectedCategory){
-    col = selectedCategory;
-  }
-  const { teamsData, schedulesData, error } = useFirestoreOverallNational(col);
+
+  const { teamsData, schedulesData, error } = useFirestoreOverallNational(selectedCategory || "");
+
   const formatDate = (date) => {
     return {
       weekday: date.toLocaleDateString("en-US", { weekday: "short" }),
