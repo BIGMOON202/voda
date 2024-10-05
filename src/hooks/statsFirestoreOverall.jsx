@@ -221,6 +221,86 @@ const statsFirestoreOverall = (selectedCategory) => {
     }
   };
 
+  const addSubDocument = async (
+    docId,
+    collectionName,
+    subcollectionData = {}
+  ) => {
+    try {
+      const newDocRef = doc(
+        collection(
+          db,
+          `${collectionName}Schedules`,
+          docId,
+          `${collectionName}Stats`
+        )
+      );
+      await setDoc(newDocRef, subcollectionData);
+      // Update state based on the collection name
+      switch (collectionName) {
+        case "Volleyball":
+          setVolleyballSchedules((prevState) => [
+            ...prevState,
+            { id: newDocRef.id, ...subcollectionData },
+          ]);
+          break;
+        case "Basketball":
+          setBasketballSchedules((prevState) => [
+            ...prevState,
+            { id: newDocRef.id, ...subcollectionData },
+          ]);
+          break;
+        case "Soccer":
+          setSoccerSchedules((prevState) => [
+            ...prevState,
+            { id: newDocRef.id, ...subcollectionData },
+          ]);
+          break;
+        default:
+          break;
+      }
+    } catch (err) {
+      console.error("Error adding new document:", err);
+      setError(err);
+    }
+  };
+
+  const deleteSubDocument = async (docId, collectionName, subDocId) => {
+    try {
+      const documentRef = doc(
+        db,
+        `${collectionName}Schedules`,
+        docId,
+        `${collectionName}Stats`,
+        subDocId
+      );
+      await deleteDoc(documentRef);
+      // Update state based on the collection name
+      switch (collectionName) {
+        case "Volleyball":
+          setVolleyballSchedules((prevState) =>
+            prevState.filter((item) => item.id !== subDocId)
+          );
+          break;
+        case "Basketball":
+          setBasketballSchedules((prevState) =>
+            prevState.filter((item) => item.id !== subDocId)
+          );
+          break;
+        case "Soccer":
+          setSoccerSchedules((prevState) =>
+            prevState.filter((item) => item.id !== subDocId)
+          );
+          break;
+        default:
+          break;
+      }
+    } catch (err) {
+      console.error("Error deleting document:", err);
+      setError(err);
+    }
+  };
+
   return {
     volleyballSchedules,
     basketballSchedules,
@@ -228,6 +308,8 @@ const statsFirestoreOverall = (selectedCategory) => {
     volleyballTeams,
     basketballTeams,
     soccerTeams,
+    addSubDocument,
+    deleteSubDocument,
     error,
   };
 };

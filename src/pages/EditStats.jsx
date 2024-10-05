@@ -17,8 +17,7 @@ export const EditStats = () => {
   const navigate = useNavigate();
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user && user.email == "felix@vodastatspr.com") {
-      } else {
+      if (user && user.email == "felix@vodastatspr.com") { /* empty */ } else {
         navigate("/");
       }
     });
@@ -29,6 +28,7 @@ export const EditStats = () => {
   const [activeTab, setActiveTab] = useState("Volleyball");
   const [activeGender, setActiveGender] = useState("Men");
   const [subDocs, setSubDocs] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedSubDocs, setSelectedSubDocs] = useState([]);
@@ -48,7 +48,7 @@ export const EditStats = () => {
     error,
     addSubDocument,
     deleteSubDocument,
-  } = statsFirestoreOverall();
+  } = statsFirestoreOverall(selectedCategory);
 
   const filteredVolleyballData = volleyballSchedules.filter(
     (team) => team.Gender === activeGender.charAt(0)
@@ -118,11 +118,11 @@ export const EditStats = () => {
     });
 
     filteredSubDocs.forEach(async (row) => {
-      await deleteSubDocument(docId, "Volleyball", row.id);
+      await deleteSubDocument(docId, `${selectedCategory}Volleyball`, row.id);
     });
 
     updatedJson.forEach(async (row) => {
-      await addSubDocument(docId, "Volleyball", row);
+      await addSubDocument(docId, `${selectedCategory}Volleyball`, row);
     });
   };
 
@@ -161,11 +161,11 @@ export const EditStats = () => {
     });
 
     filteredSubDocs.forEach(async (row) => {
-      await deleteSubDocument(docId, "Basketball", row.id);
+      await deleteSubDocument(docId, `${selectedCategory}Basketball`, row.id);
     });
 
     updatedJson.forEach(async (row) => {
-      await addSubDocument(docId, "Basketball", row);
+      await addSubDocument(docId, `${selectedCategory}Basketball`, row);
     });
   };
 
@@ -242,6 +242,10 @@ export const EditStats = () => {
     setActiveGender(gender);
   };
 
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+  }
+
   const handleViewStats = (doc, filteredSubDocs, sport) => {
     setViewSport(sport);
     setSelectedDoc(doc);
@@ -280,23 +284,32 @@ export const EditStats = () => {
       </div>
 
       {/* Gender tabs */}
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center mt-4 gap-3">
         <button
-          className={`mr-4 px-4 py-2 border rounded ${
-            activeGender === "Men" ? "bg-blue-500 text-white" : ""
+          className={`px-4 py-2 border rounded ${
+            activeGender === "Men" && selectedCategory === "" ? "bg-blue-500 text-white" : ""
           }`}
-          onClick={() => handleGenderChange("Men")}
+          onClick={() => {handleGenderChange("Men"); handleCategoryChange("");}}
         >
           Men
         </button>
         <button
           className={`px-4 py-2 border rounded ${
-            activeGender === "Women" ? "bg-blue-500 text-white" : ""
+            activeGender === "Women" && selectedCategory === "" ? "bg-blue-500 text-white" : ""
           }`}
-          onClick={() => handleGenderChange("Women")}
+          onClick={() => {handleGenderChange("Women"); handleCategoryChange("");}}
         >
           Women
         </button>
+        <button
+          className={`px-4 py-2 border rounded ${
+            activeGender === "Men" && selectedCategory === "MM" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => {handleGenderChange("Men"); handleCategoryChange("MM");}}
+        >
+          MM
+        </button>
+
       </div>
 
       {/* Content based on active tab and gender */}
@@ -378,7 +391,7 @@ export const EditStats = () => {
                           ) == "0-0" || doc.stats.length == 0
                         }
                         onClick={() => {
-                          handleViewStats(doc, doc.stats, "Volleyball");
+                          handleViewStats(doc, doc.stats, `${selectedCategory}Volleyball`);
                         }}
                       >
                         <FontAwesomeIcon icon={faEye} className="mr-2" />
@@ -507,7 +520,7 @@ export const EditStats = () => {
                           doc.Score == undefined || doc.stats.length == 0
                         }
                         onClick={() => {
-                          handleViewStats(doc, doc.stats, "Basketball");
+                          handleViewStats(doc, doc.stats, `${selectedCategory}Basketball`);
                         }}
                       >
                         <FontAwesomeIcon icon={faEye} className="mr-2" />
@@ -562,14 +575,14 @@ export const EditStats = () => {
                 {selectedDoc["TeamA"]}
               </p>
             </div>
-            {viewSport == "Volleyball" && (
+            {viewSport == `${selectedCategory}Volleyball` && (
               <StatsTable
                 subDocs={selectedSubDocs.filter(
                   (subdoc) => subdoc.School === selectedDoc["TeamA"]
                 )}
               />
             )}
-            {viewSport == "Basketball" && (
+            {viewSport == `${selectedCategory}Basketball` && (
               <StatsTableBasketball
                 subDocs={selectedSubDocs.filter(
                   (subdoc) => subdoc.School === selectedDoc["TeamA"]
@@ -584,14 +597,14 @@ export const EditStats = () => {
                 {selectedDoc["TeamB"]}
               </p>
             </div>
-            {viewSport == "Volleyball" && (
+            {viewSport == `${selectedCategory}Volleyball` && (
               <StatsTable
                 subDocs={selectedSubDocs.filter(
                   (subdoc) => subdoc.School === selectedDoc["TeamB"]
                 )}
               />
             )}
-            {viewSport == "Basketball" && (
+            {viewSport == `${selectedCategory}Basketball` && (
               <StatsTableBasketball
                 subDocs={selectedSubDocs.filter(
                   (subdoc) => subdoc.School === selectedDoc["TeamB"]
