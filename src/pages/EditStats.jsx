@@ -309,6 +309,78 @@ export const EditStats = () => {
         >
           MM
         </button>
+        <button
+          className={`px-4 py-2 border rounded ${
+            activeGender === "Women" && selectedCategory === "MF" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => {handleGenderChange("Women"); handleCategoryChange("MF");}}
+        >
+          MF
+        </button>
+        <button
+          className={`px-4 py-2 border rounded ${
+            activeGender === "Men" && selectedCategory === "JM" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => {handleGenderChange("Men"); handleCategoryChange("JM");}}
+        >
+          JM
+        </button>
+        <button
+          className={`px-4 py-2 border rounded ${
+            activeGender === "Women" && selectedCategory === "JF" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => {handleGenderChange("Women"); handleCategoryChange("JF");}}
+        >
+          JF
+        </button>
+        <button
+          className={`px-4 py-2 border rounded ${
+            activeGender === "Men" && selectedCategory === "JRM" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => {handleGenderChange("Men"); handleCategoryChange("JRM");}}
+        >
+          JRM
+        </button>
+        <button
+          className={`px-4 py-2 border rounded ${
+            activeGender === "Women" && selectedCategory === "JRF" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => {handleGenderChange("Women"); handleCategoryChange("JRF");}}
+        >
+          JRF
+        </button>
+        <button
+          className={`px-4 py-2 border rounded ${
+            activeGender === "Men" && selectedCategory === "SM" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => {handleGenderChange("Men"); handleCategoryChange("SM");}}
+        >
+          SM
+        </button>
+        <button
+          className={`px-4 py-2 border rounded ${
+            activeGender === "Women" && selectedCategory === "SF" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => {handleGenderChange("Women"); handleCategoryChange("SF");}}
+        >
+          SF
+        </button>
+        <button
+          className={`px-4 py-2 border rounded ${
+            activeGender === "Men" && selectedCategory === "PM" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => {handleGenderChange("Men"); handleCategoryChange("PM");}}
+        >
+          PM
+        </button>
+        <button
+          className={`px-4 py-2 border rounded ${
+            activeGender === "Women" && selectedCategory === "PF" ? "bg-blue-500 text-white" : ""
+          }`}
+          onClick={() => {handleGenderChange("Women"); handleCategoryChange("PF");}}
+        >
+          PF
+        </button>
 
       </div>
 
