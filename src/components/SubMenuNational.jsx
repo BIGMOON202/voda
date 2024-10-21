@@ -85,7 +85,7 @@ export const SubMenuNational = ({
                         </p>
                     </div>
                     {/* Basketball Button */}
-                    <div
+                    {/* <div
                         onClick={() => setSelectedSport("Basketball")}
                         className={`w-[210px] h-[68px] rounded-[12px] flex items-center py-[14px] px-[20px] hover: cursor-pointer ${selectedSport === "Basketball"
                             ? "bg-[#94ACC4]/30"
@@ -110,9 +110,9 @@ export const SubMenuNational = ({
                         >
                             Basketball
                         </p>
-                    </div>
+                    </div> */}
                     {/* Soccer Button */}
-                    <div
+                    {/* <div
                         onClick={() => setSelectedSport("Soccer")}
                         className={`w-[210px] h-[68px] rounded-[12px] flex items-center py-[14px] px-[20px] hover: cursor-pointer ${selectedSport === "Soccer"
                             ? "bg-[#94ACC4]/30"
@@ -135,7 +135,7 @@ export const SubMenuNational = ({
                         >
                             Soccer
                         </p>
-                    </div>
+                    </div> */}
                 </div>
                 {/* Gender/Year Dropdown */}
                 <div className="flex gap-2">
