@@ -5,7 +5,7 @@ import { VolleyballResult } from "./VolleyballResult";
 import { VolleyballPlayers } from "./VolleyballPlayers";
 import { VolleyballSchedule } from "./VolleyballSchedule";
 import { VolleyballStats } from "./VolleyballStats";
-import { JRVarsityFemenino } from "../Brackets/JRVarsityFemenino";
+import { MFbracket } from "../Brackets/MFbracket";
 
 export const VolleyballDashboardNational = ({ selectedSubTab, selectedGender, selectedCategory, selectedYear }) => {
   return (
@@ -16,8 +16,8 @@ export const VolleyballDashboardNational = ({ selectedSubTab, selectedGender, se
       {selectedSubTab == "Teams" && (
         <VolleyballTeams selectedGender={selectedGender} selectedCategory={selectedCategory} selectedYear={selectedYear} />
       )}
-      {selectedSubTab == "Brackets" && (
-        <JRVarsityFemenino />
+      {selectedSubTab == "Brackets" && selectedCategory == "MF" && (
+        <MFbracket />
       )}
       {selectedSubTab == "Stats" && (
         <VolleyballStats selectedGender={selectedGender} selectedYear={selectedYear} selectedCategory={selectedCategory} />
