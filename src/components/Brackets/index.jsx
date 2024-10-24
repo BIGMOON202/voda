@@ -1,8 +1,31 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { Circle, Layer, Line, Rect, Stage, Text } from "react-konva";
-import MFMap from "../../constants/bracket_maps/MF.draw.json";
+import { useFirestoreRealtime } from "../../hooks/useFirestoreRealtime";
 import { touchMap } from "../../utils/processBracket";
-const nameToMapItem = touchMap(MFMap.children);
+
+import JFMap from "../../constants/bracket_maps/JF.draw.json";
+import JMMap from "../../constants/bracket_maps/JM.draw.json";
+import JRFMap from "../../constants/bracket_maps/JRF.draw.json";
+import JRMMap from "../../constants/bracket_maps/JRM.draw.json";
+import MFMap from "../../constants/bracket_maps/MF.draw.json";
+import MMMap from "../../constants/bracket_maps/MM.draw.json";
+import PMMap from "../../constants/bracket_maps/PM.draw.json";
+import SFMap from "../../constants/bracket_maps/SF.draw.json";
+import SMMap from "../../constants/bracket_maps/SM.draw.json";
+
+const maps = {
+  JF: JFMap,
+  JM: JMMap,
+  JRF: JRFMap,
+  JRM: JRMMap,
+  MF: MFMap,
+  MM: MMMap,
+  PM: PMMap,
+  PF: PMMap,
+  SF: SFMap,
+  SM: SMMap
+}
+
 
 const playData = [
   {
@@ -415,15 +438,28 @@ const playData = [
 ]
 
 
-export const Brackets = () => {
+export const Brackets = ({selectedCategory}) => {
+  const bracketMap = useMemo(() => maps[selectedCategory], [selectedCategory]);
+  const nameToMapItem = useMemo(() => touchMap(bracketMap.children), [bracketMap]);
+
+  let mergedString = selectedCategory + "VolleyballSchedules";
+  const {
+    documents: initialDocuments,
+  } = useFirestoreRealtime(mergedString);
+  const [documents, setDocuments] = useState([]);
+
+  useEffect(() => {
+    setDocuments(initialDocuments);
+  }, [initialDocuments]);
+
   const map = useMemo(() => {
-    const map = MFMap.children.map(it => {
+    const map = bracketMap.children.map(it => {
       if (it.type === "RECTANGLE")
         delete it.content;
       return it;
     });
 
-    playData.map((record) => {
+    documents.map((record) => {
       if (record.TeamA) {
         const item = nameToMapItem[record.Gameid + ".up.text"];
         if (item)
@@ -442,11 +478,11 @@ export const Brackets = () => {
     })
 
     return map;
-  }, [playData])
+  }, [documents, bracketMap, nameToMapItem])
 
   return (
     <div className="flex w-full h-full items-center justify-center overflow-auto">
-      <Stage width={MFMap.width} height={MFMap.height}>
+      <Stage width={bracketMap.width} height={bracketMap.height}>
         <Layer>
           {
             map.map(item => {
@@ -455,8 +491,6 @@ export const Brackets = () => {
               }
               if (item.type === "RECTANGLE") {
                 if (item.content) {
-                  console.log(item);
-
                   return <Text
                     key={item.id}
                     x={item.x}

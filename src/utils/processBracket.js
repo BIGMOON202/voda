@@ -1,5 +1,6 @@
 export function touchMap(map) {
   console.log(map);
+  
   function getNameString(str) {
     const parts = str.split('.');
     let end = parts.length - 1;
