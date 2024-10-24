@@ -967,7 +967,7 @@ export const EditData = ({ activeSport, selectedCategory }) => {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
-          {documents.map((doc, index) => (
+          {documents.sort((a, b) => parseInt(a.Gameid) - parseInt(b.Gameid)).map((doc, index) => (
             <tr
               key={doc.id || index}
               className={`${index % 2 === 0 ? "bg-gray-50" : "bg-white"}`}
