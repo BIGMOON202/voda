@@ -84,7 +84,10 @@ const fields = {
       "Set1",
       "Set2",
       "Set3",
-      "Location"
+      "Location",
+      "Gameid",
+      "Nextgame",
+      "order"
     ],
   },
   MFBasketball: {
@@ -136,7 +139,10 @@ const fields = {
       "Set1",
       "Set2",
       "Set3",
-      "Location"
+      "Location",
+      "Gameid",
+      "Nextgame",
+      "order"
     ],
   },
   MMBasketball: {
@@ -188,7 +194,10 @@ const fields = {
       "Set1",
       "Set2",
       "Set3",
-      "Location"
+      "Location",
+      "Gameid",
+      "Nextgame",
+      "order"
     ],
   },
   JFBasketball: {
@@ -240,7 +249,10 @@ const fields = {
       "Set1",
       "Set2",
       "Set3",
-      "Location"
+      "Location",
+      "Gameid",
+      "Nextgame",
+      "order"
     ],
   },
   JMBasketball: {
@@ -292,7 +304,10 @@ const fields = {
       "Set1",
       "Set2",
       "Set3",
-      "Location"
+      "Location",
+      "Gameid",
+      "Nextgame",
+      "order"
     ],
   },
   JRFBasketball: {
@@ -344,7 +359,10 @@ const fields = {
       "Set1",
       "Set2",
       "Set3",
-      "Location"
+      "Location",
+      "Gameid",
+      "Nextgame",
+      "order"
     ],
   },
   JRMBasketball: {
@@ -396,7 +414,10 @@ const fields = {
       "Set1",
       "Set2",
       "Set3",
-      "Location"
+      "Location",
+      "Gameid",
+      "Nextgame",
+      "order"
     ],
   },
   SFBasketball: {
@@ -448,7 +469,10 @@ const fields = {
       "Set1",
       "Set2",
       "Set3",
-      "Location"
+      "Location",
+      "Gameid",
+      "Nextgame",
+      "order"
     ],
   },
   SMBasketball: {
@@ -500,7 +524,10 @@ const fields = {
       "Set1",
       "Set2",
       "Set3",
-      "Location"
+      "Location",
+      "Gameid",
+      "Nextgame",
+      "order"
     ],
   },
   PFBasketball: {
@@ -552,7 +579,10 @@ const fields = {
       "Set1",
       "Set2",
       "Set3",
-      "Location"
+      "Location",
+      "Gameid",
+      "Nextgame",
+      "order"
     ],
   },
   PMBasketball: {
@@ -684,9 +714,72 @@ export const EditData = ({ activeSport, selectedCategory }) => {
     setEditRowIndex(index);
   };
 
+  const extractScores = (result) => {
+    const score1 = [0, 0, 0];
+    const score2 = [0, 0, 0];
+
+    for (let key in result) {
+      if (key.startsWith("Set")) {
+        if (result[key] != null && result[key] != "") {
+          const [scoreTeam1, scoreTeam2] = result[key].split("-").map(Number);
+          const setNumber = parseInt(key.slice(3)) - 1;
+          score1[setNumber] = scoreTeam1;
+          score2[setNumber] = scoreTeam2;
+        }
+      }
+    }
+
+    let totalScore = [0, 0];
+    for (let i = 0; i < score1.length; i++) {
+      if (score1[i] > score2[i]) {
+        totalScore[0]++;
+      } else if (score1[i] < score2[i]) {
+        totalScore[1]++;
+      }
+    }
+
+    return totalScore;
+  };
+
   const handleSave = (index) => {
+    console.log(documents);
     updateDocument(documents[index].id, documents[index]);
     setEditRowIndex(null);
+    if (selectedCategory == "Schedules" &&
+      activeSport == "MFVolleyball" ||
+      activeSport == "MMVolleyball" ||
+      activeSport == "JFVolleyball" ||
+      activeSport == "JMVolleyball" ||
+      activeSport == "JRFVolleyball" ||
+      activeSport == "JRMolleyball" ||
+      activeSport == "SFVolleyball" ||
+      activeSport == "SMVolleyball" ||
+      activeSport == "PFVolleyball" ||
+      activeSport == "PMVolleyball"
+    ) {
+      let totalScore = extractScores(documents[index]);
+      if (totalScore[0] != totalScore[1] && (totalScore[0] >= 2 || totalScore[1] >= 2)) {
+        let nextDoc = documents.filter((doc) => {
+          return (doc.Gameid == documents[index].Nextgame);
+        });
+        if (nextDoc != null) {
+          let winner;
+          if(totalScore[0] > totalScore[1]){
+            winner = documents[index].TeamA;
+          } else {
+            winner = documents[index].TeamB;
+          }
+          if(documents[index].order == "TeamA"){
+            nextDoc[0].TeamA = winner;
+          } else {
+            nextDoc[0].TeamB = winner;
+          }
+          updateDocument(nextDoc[0].id, nextDoc[0]);
+        }
+      }
+    }
+
+    
   };
 
   const handleRemove = async (index) => {
@@ -724,7 +817,7 @@ export const EditData = ({ activeSport, selectedCategory }) => {
       let filteredDoc = [];
       if (mergedString == "VolleyballSchedules" || mergedString == "PRHSAAVolleyballSchedules") {
         filteredDoc = documents.filter((doc) => {
-          return (doc.Gender =
+          return (doc.Gender ==
             row.Gender &&
             doc.Date == row.Date &&
             doc.TeamA == row.TeamA &&
@@ -732,11 +825,14 @@ export const EditData = ({ activeSport, selectedCategory }) => {
             doc.Type == row.Type &&
             doc.Set1 == row.Set1 &&
             doc.Set2 == row.Set2 &&
-            doc.Set3 == row.Set3);
+            doc.Set3 == row.Set3 &&
+            doc.Gameid == row.Gameid &&
+            doc.Nextgame == row.Nextgame &&
+            doc.order == row.order);
         });
       } else if (mergedString == "SoccerSchedules" || mergedString == "PRHSAASoccerSchedules") {
         filteredDoc = documents.filter((doc) => {
-          return (doc.Gender =
+          return (doc.Gender ==
             row.Gender &&
             doc.Date == row.Date &&
             doc.TeamA == row.TeamA &&
@@ -871,7 +967,7 @@ export const EditData = ({ activeSport, selectedCategory }) => {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-200">
-          {documents.map((doc, index) => (
+          {documents.sort((a, b) => parseInt(a.Gameid) - parseInt(b.Gameid)).map((doc, index) => (
             <tr
               key={doc.id || index}
               className={`${index % 2 === 0 ? "bg-gray-50" : "bg-white"}`}

@@ -42,7 +42,6 @@ export const RouteHandler = () => {
         <Route path="/upload" element={<ExcelUpload />} />
         <Route path="/edit_stats" element={<EditStats />} />
         <Route path="/privacy" element={<Privacy />} />
-        <Route path="/PRHSAA" element={<PRHSAA />} />
       </Routes>
     </>
   );
