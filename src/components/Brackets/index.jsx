@@ -481,8 +481,8 @@ export const Brackets = ({selectedCategory}) => {
   }, [documents, bracketMap, nameToMapItem])
 
   return (
-    <div className="flex w-full h-full items-center justify-center overflow-auto">
-      <Stage width={bracketMap.width} height={bracketMap.height}>
+    <div className="w-full h-screen text-center overflow-auto">
+      <Stage width={bracketMap.width} height={bracketMap.height} className="flex justify-center">
         <Layer>
           {
             map.map(item => {
